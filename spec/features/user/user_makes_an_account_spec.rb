@@ -18,5 +18,17 @@ describe 'As a visitor' do
       expect(current_path).to eq(login_path)
       expect(page).to have_content('Account creation successful.')
     end
+    scenario 'I fill in form incorrectly and am given an error message' do
+      visit new_user_path
+
+      fill_in :user_name, with: ''
+      fill_in :user_email, with: 'mikecm@gmail.com'
+      fill_in :user_password, with: 'password'
+      fill_in :user_password_confirmation, with: 'notthesame'
+      click_on 'Create Account'
+
+      expect(current_path).to eq(users_path)
+      expect(page).to have_content('Password confirmation doesn\'t match Password. Name can\'t be blank')
+    end
   end
 end
