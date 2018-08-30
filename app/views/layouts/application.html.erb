@@ -25,8 +25,13 @@
           <li><a href="collapsible.html">Genres</a></li>
           <li><a href="mobile.html">Tags</a></li>
           <li>&emsp;&emsp;&emsp;</li>
-          <li><%= link_to 'Sign Up', new_user_path, id: 'desktop-sign-up' %></li>
-          <li><%= link_to 'Log In', '#', id: 'desktop-log-in' %></li>
+          <% if current_user %>
+            <li><%= link_to current_user.email, '#' %></li>
+            <li><%= link_to 'Log Out', logout_path, method: :delete, id: 'desktop-log-out' %></li>
+          <% else %>
+            <li><%= link_to 'Sign Up', new_user_path, id: 'desktop-sign-up' %></li>
+            <li><%= link_to 'Log In', login_path, id: 'desktop-log-in' %></li>
+          <% end %>
         </ul>
       </div>
     </nav>
@@ -36,8 +41,13 @@
       <li><a href="collapsible.html">Genres</a></li>
       <li><a href="mobile.html">Tags</a></li>
       <li>&emsp;</li>
-      <li><%= link_to 'Sign Up', new_user_path, id: 'mobile-sign-up' %></li>
-      <li><%= link_to 'Log In', '#', id: 'mobile-log-in' %></li>
+      <% if current_user %>
+        <li><%= link_to current_user.email, '#' %></li>
+        <li><%= link_to 'Logout', logout_path, method: :delete, id: 'mobile-log-out' %></li>
+      <% else %>
+        <li><%= link_to 'Sign Up', new_user_path, id: 'mobile-sign-up' %></li>
+        <li><%= link_to 'Log In', login_path, id: 'mobile-log-in' %></li>
+      <% end %>
     </ul>
     <div class="container">
       <% flash.each do |name, msg| %>
