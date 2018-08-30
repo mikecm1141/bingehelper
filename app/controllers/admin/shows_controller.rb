@@ -1,5 +1,10 @@
 class Admin::ShowsController < ApplicationController
   before_action :set_show, only: %i[show edit update]
+
+  def index
+    @shows = Show.all
+  end
+
   def new
     @show = Show.new
   end
