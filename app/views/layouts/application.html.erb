@@ -3,14 +3,11 @@
   <head>
     <title>BingeHelper</title>
     <%= csrf_meta_tags %>
-
-    <%= stylesheet_link_tag    'application', media: 'all' %>
-    <%= javascript_include_tag 'application' %>
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
     <script>
       $(document).ready(function(){
         $('.sidenav').sidenav();
@@ -27,15 +24,20 @@
           <li><a href="badges.html">Ratings</a></li>
           <li><a href="collapsible.html">Genres</a></li>
           <li><a href="mobile.html">Tags</a></li>
+          <li>&emsp;&emsp;&emsp;</li>
+          <li><%= link_to 'Sign Up', new_user_path, id: 'desktop-sign-up' %></li>
+          <li><%= link_to 'Log In', '#', id: 'desktop-log-in' %></li>
         </ul>
       </div>
     </nav>
-
     <ul class="sidenav" id="mobile-demo">
       <li><%= link_to 'Shows', admin_shows_path %></li>
       <li><a href="badges.html">Ratings</a></li>
       <li><a href="collapsible.html">Genres</a></li>
       <li><a href="mobile.html">Tags</a></li>
+      <li>&emsp;</li>
+      <li><%= link_to 'Sign Up', new_user_path, id: 'mobile-sign-up' %></li>
+      <li><%= link_to 'Log In', '#', id: 'mobile-log-in' %></li>
     </ul>
     <div class="container">
       <% flash.each do |name, msg| %>
