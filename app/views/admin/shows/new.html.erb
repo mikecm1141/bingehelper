@@ -1,6 +1,6 @@
 <h1>Admin - Add Show</h1>
 
-<%= form_for @show do |f| %>
+<%= form_for [:admin, @show] do |f| %>
   <%= f.label :title %>
   <%= f.text_field :title %>
 
