@@ -16,7 +16,7 @@ describe 'As a visitor' do
       click_on 'Create Account'
 
       expect(current_path).to eq(root_path)
-      expect(page).to have_content('Account successfully created!')
+      expect(page).to have_content('Account creation successful.')
     end
   end
 end
