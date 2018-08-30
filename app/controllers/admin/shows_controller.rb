@@ -1,5 +1,5 @@
 class Admin::ShowsController < ApplicationController
-  before_action :set_show, only: %i[show edit]
+  before_action :set_show, only: %i[show edit update]
   def new
     @show = Show.new
   end
@@ -19,6 +19,16 @@ class Admin::ShowsController < ApplicationController
   end
 
   def edit
+  end
+
+  def update
+    if @show.update(show_params)
+      flash[:success] = "'#{@show.title}' has been edited!"
+      redirect_to admin_show_path(@show)
+    else
+      flash[:failure] = @show.errors.full_messages.join('. ')
+      redirect_to edit_admin_show_path(@show)
+    end
   end
 
   private
