@@ -1,4 +1,5 @@
 class Admin::ShowsController < ApplicationController
+  before_action :admin_authorize
   before_action :set_show, only: %i[show edit update destroy]
 
   def index
