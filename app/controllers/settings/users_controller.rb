@@ -4,12 +4,18 @@ class Settings::UsersController < ApplicationController
   def show
     if current_user.id == params[:id].to_i
       @user = User.find(params[:id])
+    else
+      flash['card-panel red lighten-2 center-align'] = 'You are not authorized to view that page.'
+      redirect_to root_path
     end
   end
 
   def edit
     if current_user.id == params[:id].to_i
       @user = User.find(params[:id])
+    else
+      flash['card-panel red lighten-2 center-align'] = 'You are not authorized to view that page.'
+      redirect_to root_path
     end
   end
 

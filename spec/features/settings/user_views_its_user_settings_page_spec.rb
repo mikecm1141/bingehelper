@@ -36,3 +36,15 @@ describe 'As a user' do
     end
   end
 end
+describe 'As a visitor' do
+  before(:each) do
+    @user = User.create!(name: 'Mike', email: 'mikecm@gmail.com', password: 'pass', password_confirmation: 'pass')
+  end
+  describe 'I cannot see these pages until logged in' do
+    it 'sends me back to the login page with an error message' do
+      visit settings_user_path(1)
+
+      expect(current_path).to eq(login_path)
+    end
+  end
+end
