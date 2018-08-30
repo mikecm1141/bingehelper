@@ -1,17 +1,24 @@
-<h1>All Shows</h1>
+<h3 class="center-align">Show Index</h3>
+<h5 class="center-align"><%= link_to 'Add Show', new_admin_show_path %></h5>
 
-<ul>
+<table class="striped table-responsive">
   <% @shows.each do |show| %>
-    <li>
-      <%= link_to show.title, admin_show_path(show) %> |
-      <%= link_to 'Edit', edit_admin_show_path(show), id: "edit-show-#{show.id}" %> |
-      <%=
-          link_to 'Delete',
-          admin_show_path(show),
-          id: "destroy-show-#{show.id}",
-          method: :delete,
-          data: confirm_destroy(show.title)
-      %>
-    </li>
+    <tr>
+      <td>
+        <%= link_to show.title, admin_show_path(show) %>
+      </td>
+      <td>
+        <%= link_to 'Edit', edit_admin_show_path(show), id: "edit-show-#{show.id}" %>
+      </td>
+      <td>
+        <%=
+            link_to 'Delete',
+            admin_show_path(show),
+            id: "destroy-show-#{show.id}",
+            method: :delete,
+            data: confirm_destroy(show.title)
+        %>
+      </td>
+  </tr>
   <% end %>
 </ul>
