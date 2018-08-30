@@ -9,10 +9,10 @@ class UsersController < ApplicationController
     @user.email.downcase!
 
     if @user.save
-      flash[:notice] = 'Account creation successful.'
-      redirect_to root_path
+      flash['card-panel green center-align'] = 'Account creation successful.'
+      redirect_to login_path
     else
-      flash.now.alert = @user.errors.full_messages.join('. ')
+      flash.now['card-panel red lighten-2 center-align'] = @user.errors.full_messages.join('. ')
       render :new
     end
   end

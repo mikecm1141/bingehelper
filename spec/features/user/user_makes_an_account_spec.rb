@@ -15,7 +15,7 @@ describe 'As a visitor' do
       fill_in :user_password_confirmation, with: 'password'
       click_on 'Create Account'
 
-      expect(current_path).to eq(root_path)
+      expect(current_path).to eq(login_path)
       expect(page).to have_content('Account creation successful.')
     end
   end
