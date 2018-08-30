@@ -2,7 +2,7 @@ class Admin::ShowsController < ApplicationController
   before_action :set_show, only: %i[show edit update]
 
   def index
-    @shows = Show.all
+    @shows = Show.order(title: :asc)
   end
 
   def new
