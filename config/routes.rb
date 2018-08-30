@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   root to: 'dashboard#index'
-  
+
   get '/login',     to: 'sessions#new'
   post '/login',    to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
@@ -9,5 +9,9 @@ Rails.application.routes.draw do
     resources :shows
   end
 
-  resources :users, only: %i[new create]
+  namespace :settings do
+    resources :users, only: %i[show edit update]
+  end
+
+  resources :users, only: %i[new create show]
 end

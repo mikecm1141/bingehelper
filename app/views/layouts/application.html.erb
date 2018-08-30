@@ -26,7 +26,7 @@
           <li><a href="mobile.html">Tags</a></li>
           <li>&emsp;&emsp;&emsp;</li>
           <% if current_user %>
-            <li><%= link_to current_user.email, '#' %></li>
+            <li><%= link_to current_user.email, settings_user_path(current_user), id: 'desktop-user-link' %></li>
             <li><%= link_to 'Log Out', logout_path, method: :delete, id: 'desktop-log-out' %></li>
           <% else %>
             <li><%= link_to 'Sign Up', new_user_path, id: 'desktop-sign-up' %></li>
@@ -57,7 +57,7 @@
       <li><a href="mobile.html">Tags</a></li>
       <li>&emsp;</li>
       <% if current_user %>
-        <li><%= link_to current_user.email, '#' %></li>
+        <li><%= link_to current_user.email, settings_user_path(current_user), id: 'mobile-user-link'  %></li>
         <li><%= link_to 'Logout', logout_path, method: :delete, id: 'mobile-log-out' %></li>
       <% else %>
         <li><%= link_to 'Sign Up', new_user_path, id: 'mobile-sign-up' %></li>
