@@ -1,8 +1,8 @@
-<h1>Login</h1>
+<h3>Login</h3>
 
 <%= form_for :login do |f| %>
   <%= f.label :email %>
-  <%= f.text_field :email %>
+  <%= f.text_field :email, autofocus: true %>
 
   <%= f.label :password %>
   <%= f.password_field :password %>

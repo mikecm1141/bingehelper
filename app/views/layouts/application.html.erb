@@ -15,9 +15,9 @@
     </script>
   </head>
   <body>
-    <nav>
+    <nav class="nav-extended">
       <div class="nav-wrapper blue-grey darken-2">
-        <a href="#!" class="brand-logo">BingeHelper</a>
+        <%= link_to 'BingeHelper', root_path, class: 'brand-logo' %>
         <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
         <ul class="right hide-on-med-and-down">
           <li><%= link_to 'Shows', admin_shows_path %></li>
@@ -26,7 +26,7 @@
           <li><a href="mobile.html">Tags</a></li>
           <li>&emsp;&emsp;&emsp;</li>
           <% if current_user %>
-            <li><%= link_to current_user.email, '#' %></li>
+            <li><%= link_to current_user.email, settings_user_path(current_user), id: 'desktop-user-link' %></li>
             <li><%= link_to 'Log Out', logout_path, method: :delete, id: 'desktop-log-out' %></li>
           <% else %>
             <li><%= link_to 'Sign Up', new_user_path, id: 'desktop-sign-up' %></li>
@@ -34,6 +34,21 @@
           <% end %>
         </ul>
       </div>
+
+      <!-- admin only menu -->
+      <% if current_user && current_user.admin? %>
+        <div class="nav-content blue-grey darken-3">
+          <ul class="tabs tabs-transparent">
+            <li class="tab">Admin Tools</li>
+            <li class="tab"><%= link_to 'Shows', admin_shows_path %></li>
+            <li class="tab"><a href="#">Ratings</a></li>
+            <li class="tab"><a href="#">Genres</a></li>
+            <li class="tab"><a href="#">Tags</a></li>
+          </ul>
+        </div>
+      <% end %>
+      <!-- end admin only menu -->
+
     </nav>
     <ul class="sidenav" id="mobile-demo">
       <li><%= link_to 'Shows', admin_shows_path %></li>
@@ -42,7 +57,7 @@
       <li><a href="mobile.html">Tags</a></li>
       <li>&emsp;</li>
       <% if current_user %>
-        <li><%= link_to current_user.email, '#' %></li>
+        <li><%= link_to current_user.email, settings_user_path(current_user), id: 'mobile-user-link'  %></li>
         <li><%= link_to 'Logout', logout_path, method: :delete, id: 'mobile-log-out' %></li>
       <% else %>
         <li><%= link_to 'Sign Up', new_user_path, id: 'mobile-sign-up' %></li>

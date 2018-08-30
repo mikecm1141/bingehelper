@@ -7,7 +7,10 @@ class ApplicationController < ActionController::Base
   end
 
   def authorize
-    redirect_to login_path, alert: 'You must be logged in to access this page.' if current_user.nil?
+    if current_user.nil?
+      flash['card-panel red lighten-2 center-align'] = 'You must be logged in to access this page.'
+      redirect_to login_path
+    end
   end
 
   def admin_authorize
