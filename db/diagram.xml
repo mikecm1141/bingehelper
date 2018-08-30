@@ -37,7 +37,7 @@
 		<type label="SET" length="1" sql="SET" quote=""/>
 		<type label="Bit" length="0" sql="bit" quote=""/>
 	</group>
-</datatypes><table x="759" y="266" name="shows">
+</datatypes><table x="689" y="242" name="shows">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -71,7 +71,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="86" y="250" name="show_ratings">
+<table x="71" y="61" name="show_ratings">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -90,7 +90,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="899" y="573" name="show_genres">
+<table x="899" y="482" name="show_genres">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -136,7 +136,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="438" y="419" name="taggings">
+<table x="407" y="477" name="taggings">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -152,7 +152,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="80" y="494" name="tags">
+<table x="86" y="334" name="tags">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
