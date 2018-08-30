@@ -1,6 +1,9 @@
 <%= form_for [:admin, @show] do |f| %>
   <%= f.label :title %>
-  <%= f.text_field :title %>
+  <%= f.text_field :title, autofocus: true %>
 
-  <%= f.submit %>
+  <%= f.label :year %>
+  <%= f.select :year, (Date.today.year-65)..(Date.today.year), :selected => @show.year || Time.current.year %>
+
+  <%= f.submit class: 'btn waves-effect waves-light' %>
 <% end %>

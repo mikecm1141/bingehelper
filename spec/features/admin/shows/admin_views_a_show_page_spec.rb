@@ -12,12 +12,13 @@ describe 'As an admin' do
   end
   describe 'when I visit /admin/show/:id' do
     before(:each) do
-      @show = Show.create!(title: 'Futurama')
+      @show = Show.create!(title: 'Futurama', year: 2002)
     end
-    scenario 'I see the show title' do
+    scenario 'I see the show details' do
       visit admin_show_path(@show)
 
       expect(page).to have_content(@show.title)
+      expect(page).to have_content(@show.year)
     end
     it 'has links to edit and delete that show' do
       visit admin_show_path(@show)

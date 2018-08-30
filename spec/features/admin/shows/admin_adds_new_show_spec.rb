@@ -15,17 +15,19 @@ describe 'As an admin' do
       visit new_admin_show_path
 
       fill_in :show_title, with: 'Futurama'
+      select '2002', from: :show_year
       click_on 'Create Show'
 
       expect(current_path).to eq(admin_show_path(Show.last.id))
       expect(page).to have_content('Futurama')
     end
     scenario 'I enter a non-unique title and see a failure message' do
-      Show.create!(title: 'Futurama')
+      Show.create!(title: 'Futurama', year: 2002)
 
       visit new_admin_show_path
 
       fill_in :show_title, with: 'Futurama'
+      select '2002', from: :show_year
       click_on 'Create Show'
 
       expect(current_path).to eq(new_admin_show_path)

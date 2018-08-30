@@ -1,5 +1,11 @@
-<h3 class="center-align"><%= @show.title %></h3>
+<h4 class="center-align"><%= @show.title %> (<%= @show.year %>)</h4>
 <h5 class="center-align">
-  <%= link_to 'Edit', edit_admin_show_path(@show) %>
-  <%= link_to 'Delete', admin_show_path(@show), method: :delete, data: confirm_destroy(@show.title) %>
+  <%= link_to 'Edit', edit_admin_show_path(@show), class: 'waves-effect waves-light btn-small' %>
+  <%=
+      link_to 'Delete',
+      admin_show_path(@show),
+      method: :delete,
+      data: confirm_destroy(@show.title),
+      class: 'waves-effect waves-light btn-small'
+  %>
 </h5>

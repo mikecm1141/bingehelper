@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :shows
+    resources :genres
   end
 
   namespace :settings do

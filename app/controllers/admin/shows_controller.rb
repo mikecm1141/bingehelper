@@ -17,7 +17,7 @@ class Admin::ShowsController < ApplicationController
     show = Show.new(show_params)
     if show.save
       flash['card-panel green center-align'] = "'#{show.title}' has been added!"
-      redirect_to admin_show_path(show)
+      redirect_to admin_shows_path
     else
       flash['card-panel red lighten-2 center-align'] = show.errors.full_messages.join('. ')
       redirect_to new_admin_show_path
@@ -46,7 +46,7 @@ class Admin::ShowsController < ApplicationController
   private
 
   def show_params
-    params.require(:show).permit(:title)
+    params.require(:show).permit(:title, :year)
   end
 
   def set_show
