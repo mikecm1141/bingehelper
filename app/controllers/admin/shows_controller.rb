@@ -1,5 +1,5 @@
 class Admin::ShowsController < ApplicationController
-  before_action :set_show, only: %i[show edit update]
+  before_action :set_show, only: %i[show edit update destroy]
 
   def index
     @shows = Show.order(title: :asc)
@@ -34,6 +34,12 @@ class Admin::ShowsController < ApplicationController
       flash[:failure] = @show.errors.full_messages.join('. ')
       redirect_to edit_admin_show_path(@show)
     end
+  end
+
+  def destroy
+    @show.destroy
+
+    redirect_to admin_shows_path
   end
 
   private
