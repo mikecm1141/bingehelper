@@ -16,7 +16,6 @@ describe 'As an admin' do
     scenario 'I click delete on the show index page and it takes me back to the Show index' do
       visit admin_shows_path
 
-      save_and_open_page
       find("#destroy-show-#{@show.id}").click
 
       expect(current_path).to eq(admin_shows_path)

@@ -1,5 +1,5 @@
-<h1><%= @show.title %></h1>
-<h4>
+<h3 class="center-align"><%= @show.title %></h3>
+<h5 class="center-align">
   <%= link_to 'Edit', edit_admin_show_path(@show) %>
   <%= link_to 'Delete', admin_show_path(@show), method: :delete, data: confirm_destroy(@show.title) %>
-</h4>
+</h5>

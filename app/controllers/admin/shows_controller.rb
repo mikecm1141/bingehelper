@@ -15,10 +15,10 @@ class Admin::ShowsController < ApplicationController
   def create
     show = Show.new(show_params)
     if show.save
-      flash[:success] = "'#{show.title}' has been added!"
+      flash['card-panel green center-align'] = "'#{show.title}' has been added!"
       redirect_to admin_show_path(show)
     else
-      flash[:failure] = show.errors.full_messages.join('. ')
+      flash['card-panel red lighten-2 center-align'] = show.errors.full_messages.join('. ')
       redirect_to new_admin_show_path
     end
   end
@@ -28,10 +28,10 @@ class Admin::ShowsController < ApplicationController
 
   def update
     if @show.update(show_params)
-      flash[:success] = "'#{@show.title}' has been edited!"
+      flash['card-panel green center-align'] = "'#{@show.title}' has been edited!"
       redirect_to admin_show_path(@show)
     else
-      flash[:failure] = @show.errors.full_messages.join('. ')
+      flash['card-panel red lighten-2 center-align'] = @show.errors.full_messages.join('. ')
       redirect_to edit_admin_show_path(@show)
     end
   end
