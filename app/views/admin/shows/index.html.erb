@@ -5,7 +5,7 @@
     <li>
       <%= link_to show.title, admin_show_path(show) %> |
       <%= link_to 'Edit', edit_admin_show_path(show), id: "edit-show-#{show.id}" %> |
-      <%= link_to 'Delete', admin_show_path(show), method: :delete, data: {confirm: delete_message(show.title) } %>
+      <%= link_to 'Delete', admin_show_path(show), method: :delete, data: confirm_destroy(show.title) %>
     </li>
   <% end %>
 </ul>
