@@ -12,7 +12,7 @@ describe 'As an admin' do
   end
   describe 'when I want to delete a show' do
     before(:each) do
-      @show = Show.create!(title: 'Futurama')
+      @show = Show.create!(title: 'Futurama', year: 2002)
     end
     scenario 'I click delete on a show page and it takes me to the Show index' do
       visit admin_show_path(@show)

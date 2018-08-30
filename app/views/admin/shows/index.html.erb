@@ -1,22 +1,27 @@
-<h3 class="center-align">Show Index</h3>
-<h5 class="center-align"><%= link_to 'Add Show', new_admin_show_path %></h5>
+<h4 class="center-align">Show Index</h4>
+<h5 class="center-align"><%= link_to 'Add Show', new_admin_show_path, class: 'waves-effect waves-light btn-large' %></h5>
 
 <table class="striped table-responsive">
   <% @shows.each do |show| %>
     <tr>
-      <td>
+      <td id="year-id-<%= show.id %>">
         <%= link_to show.title, admin_show_path(show) %>
+        (<%= show.year %>)
       </td>
-      <td>
-        <%= link_to 'Edit', edit_admin_show_path(show), id: "edit-show-#{show.id}" %>
+      <td class="table-fit">
+        <%= link_to 'Edit',
+            edit_admin_show_path(show),
+            id: "edit-show-#{show.id}",
+            class: 'waves-effect waves-light btn-small' %>
       </td>
-      <td>
+      <td class="table-fit">
         <%=
             link_to 'Delete',
             admin_show_path(show),
             id: "destroy-show-#{show.id}",
             method: :delete,
-            data: confirm_destroy(show.title)
+            data: confirm_destroy(show.title),
+            class: 'waves-effect waves-light btn-small'
         %>
       </td>
   </tr>
