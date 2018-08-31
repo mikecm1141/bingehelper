@@ -2,13 +2,8 @@ require 'rails_helper'
 
 describe 'As an admin' do
   before(:each) do
-    @admin_user = User.create!(name: 'Mike', email: 'mikecm@gmail.com', password: 'password', password_confirmation: 'password', admin: true)
-
-    visit login_path
-
-    fill_in :login_email, with: @admin_user.email
-    fill_in :login_password, with: @admin_user.password
-    click_on 'Login'
+    admin = User.create!(name: 'Admin', email: 'admin', password: 'admin', password_confirmation: 'admin', admin: true)
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
   end
   describe 'when I visit /admin/shows/new' do
     scenario 'I fill out the new show form and see the show page' do
