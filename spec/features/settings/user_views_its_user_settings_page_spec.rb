@@ -2,13 +2,8 @@ require 'rails_helper'
 
 describe 'As a user' do
   before(:each) do
-    @user = User.create!(name: 'Mike', email: 'mikecm@gmail.com', password: 'pass', password_confirmation: 'pass')
-
-    visit login_path
-
-    fill_in :login_email, with: @user.email
-    fill_in :login_password, with: @user.password
-    click_on 'Login'
+    @user = User.create!(name: 'User', email: 'user', password: 'user', password_confirmation: 'user', admin: false)
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user)
   end
   describe 'When I click my email when logged in' do
     scenario 'I see my user information and history page' do
@@ -42,7 +37,7 @@ describe 'As a visitor' do
   end
   describe 'I cannot see these pages until logged in' do
     it 'sends me back to the login page with an error message' do
-      visit settings_user_path(1)
+      visit settings_user_path(@user)
 
       expect(current_path).to eq(login_path)
     end
