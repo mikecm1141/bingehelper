@@ -4,10 +4,10 @@ describe 'As an admin' do
   before(:each) do
     admin = User.create!(name: 'Admin', email: 'admin', password: 'admin', password_confirmation: 'admin', admin: true)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
+    @show = create(:show, title: 'The Simpsons')
   end
   describe 'when I visit /admin/show/:id/edit' do
     before(:each) do
-      @show = Show.create!(title: 'Futurama', year: 2002)
     end
     scenario 'I can edit a show and see its updated show page' do
       visit edit_admin_show_path(@show)
@@ -19,11 +19,11 @@ describe 'As an admin' do
       expect(page).to have_content('The Simpsons')
     end
     scenario 'I update with a non-unique title and see a failure message' do
-      show = Show.create!(title: 'The Simpsons', year: 1992)
+      show = create(:show, title: 'Futurama')
 
       visit edit_admin_show_path(show)
 
-      fill_in :show_title, with: 'Futurama'
+      fill_in :show_title, with: 'The Simpsons'
       select '2002', from: :show_year
       click_on 'Update Show'
 

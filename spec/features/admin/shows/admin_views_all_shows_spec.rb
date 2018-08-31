@@ -7,9 +7,7 @@ describe 'As an admin' do
   end
   describe 'when I visit /admin/shows' do
     before(:each) do
-      @show1 = Show.create!(title: 'Futurama', year: 2002)
-      @show2 = Show.create!(title: 'The Simpsons', year: 1993)
-      @show3 = Show.create!(title: 'Seinfeld', year: 1990)
+      @show1, @show2, @show3 = create_list(:show, 3)
     end
     scenario 'I see a list of all shows' do
       visit admin_shows_path

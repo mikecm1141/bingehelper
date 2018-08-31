@@ -41,7 +41,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'launchy'
   gem 'simplecov'
-  gem 'mocha'
+  gem 'factory_bot_rails'
 end
 
 group :development do

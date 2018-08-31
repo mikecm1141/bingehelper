@@ -17,7 +17,7 @@ describe 'As an admin' do
       expect(page).to have_content('Futurama')
     end
     scenario 'I enter a non-unique title and see a failure message' do
-      Show.create!(title: 'Futurama', year: 2002)
+      song = create(:show, title: 'Futurama')
 
       visit new_admin_show_path
 
