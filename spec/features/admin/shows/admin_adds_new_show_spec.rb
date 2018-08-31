@@ -18,7 +18,7 @@ describe 'As an admin' do
       select '2002', from: :show_year
       click_on 'Create Show'
 
-      expect(current_path).to eq(admin_show_path(Show.last.id))
+      expect(current_path).to eq(admin_shows_path)
       expect(page).to have_content('Futurama')
     end
     scenario 'I enter a non-unique title and see a failure message' do

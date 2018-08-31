@@ -2,37 +2,37 @@ require 'rails_helper'
 
 describe 'As an admin' do
   before(:each) do
-    @genre = Genre.create!(type: 'Comedy')
+    @genre = Genre.create!(title: 'Comedy')
   end
   describe 'when I visit /admin/genres/1/edit' do
     scenario 'I can edit an existing genre' do
-      visit '/admin/genres/1/edit'
+      visit edit_admin_genre_path(@genre)
 
-      fill_in :genre_type, with: 'Action'
+      fill_in :genre_title, with: 'Action'
       click_on 'Update Genre'
 
-      expect(current_path).to eq('/admin/genres/1')
+      expect(current_path).to eq(admin_genre_path(@genre))
       expect(page).to have_content('Action')
     end
     scenario 'It fails when attempting to update with duplicate genre' do
-      Genre.create!(type: 'Action')
+      Genre.create!(title: 'Action')
 
-      visit '/admin/genres/1/edit'
+      visit edit_admin_genre_path(@genre)
 
-      fill_in :genre_type, with: 'Comedy'
+      fill_in :genre_title, with: 'Action'
       click_on 'Update Genre'
 
-      expect(current_path).to eq('/admin/genres/1/edit')
-      expect(page).to have_content('Type has already been taken')
+      expect(current_path).to eq(edit_admin_genre_path(@genre))
+      expect(page).to have_content('Title has already been taken')
     end
     scenario 'It fails when attempting to update with no genre' do
-      visit '/admin/genres/1/edit'
+      visit edit_admin_genre_path(@genre)
 
-      fill_in :genre_type, with: ''
+      fill_in :genre_title, with: ''
       click_on 'Update Genre'
 
-      expect(current_path).to eq('/admin/genres/1/edit')
-      expect(page).to have_content('Type can\'t be blank')
+      expect(current_path).to eq(edit_admin_genre_path(@genre))
+      expect(page).to have_content('Title can\'t be blank')
     end
   end
 end
