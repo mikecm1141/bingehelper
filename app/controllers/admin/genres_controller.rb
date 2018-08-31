@@ -1,6 +1,8 @@
 class Admin::GenresController < ApplicationController
   before_action :set_genre, only: %i[edit show update destroy]
+
   def index
+    @genres = Genre.order(title: :asc)
   end
 
   def new
@@ -32,6 +34,12 @@ class Admin::GenresController < ApplicationController
   end
 
   def show
+  end
+
+  def destroy
+    @genre.destroy
+
+    redirect_to admin_genres_path
   end
 
   private

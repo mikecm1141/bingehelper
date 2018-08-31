@@ -1,1 +1,30 @@
-<h4 class="align-center">Genre Index</h4>
+<h4 class="center-align">Genre Index</h4>
+<h5 class="center-align">
+  <%= link_to 'Add Genre', new_admin_genre_path, class: 'waves-effect waves-light btn-large' %>
+</h5>
+
+<table class="striped table-responsive">
+  <% @genres.each do |genre| %>
+    <tr>
+      <td>
+        <%= link_to genre.title, admin_genre_path(genre) %>
+      </td>
+      <td class="table-fit">
+        <%= link_to 'Edit',
+            edit_admin_genre_path(genre),
+            id: "edit-genre-#{genre.id}",
+            class: 'waves-effect waves-light btn-small' %>
+      </td>
+      <td class="table-fit">
+        <%=
+            link_to 'Delete',
+            admin_genre_path(genre),
+            id: "destroy-genre-#{genre.id}",
+            method: :delete,
+            data: confirm_destroy(genre.title),
+            class: 'waves-effect waves-light btn-small'
+        %>
+      </td>
+  </tr>
+  <% end %>
+</table>
