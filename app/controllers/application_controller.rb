@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
   def admin_authorize
     if current_user.nil?
       flash['card-panel red lighten-2 center-align'] = 'You must be an administrator to access this page.'
-      redirect_to rlogin_path
+      redirect_to login_path
     elsif !current_user.admin
       flash['card-panel red lighten-2 center-align'] = 'You must be an administrator to access this page.'
       redirect_to login_path
