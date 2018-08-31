@@ -7,7 +7,7 @@ describe 'As an admin' do
   end
   describe 'when I visit /admin/show/:id' do
     before(:each) do
-      @show = Show.create!(title: 'Futurama', year: 2002)
+      @show = create(:show)
     end
     scenario 'I see the show details' do
       visit admin_show_path(@show)

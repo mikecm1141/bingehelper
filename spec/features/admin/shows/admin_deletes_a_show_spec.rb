@@ -4,11 +4,9 @@ describe 'As an admin' do
   before(:each) do
     admin = User.create!(name: 'Admin', email: 'admin', password: 'admin', password_confirmation: 'admin', admin: true)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
+    @show = create(:show)
   end
   describe 'when I want to delete a show' do
-    before(:each) do
-      @show = Show.create!(title: 'Futurama', year: 2002)
-    end
     scenario 'I click delete on a show page and it takes me to the Show index' do
       visit admin_show_path(@show)
 
