@@ -31,4 +31,5 @@ describe 'As an admin' do
       expect(current_path).to eq ('/admin/genres/new')
       expect(page).to have_content('Type can\'t be blank')
     end
+  end
 end
