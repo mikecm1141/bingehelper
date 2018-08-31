@@ -1,8 +1,13 @@
 select {
- display: block;
- margin-bottom: 10px;
+  display: block;
+  margin-bottom: 10px;
 }
 
 .table-fit {
   width: 1px;
+}
+
+#genre-box {
+  width: 350px;
+  height: 100px;
 }

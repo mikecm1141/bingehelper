@@ -11,6 +11,8 @@ class Admin::ShowsController < ApplicationController
   end
 
   def show
+    @genres = Genre.order(title: :asc)
+    @new_show_genres = ShowGenre.new
   end
 
   def create

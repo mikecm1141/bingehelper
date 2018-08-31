@@ -7,4 +7,8 @@ describe Show, type: :model do
     it { should validate_uniqueness_of :title }
     it { should validate_numericality_of :year }
   end
+  describe 'relationships' do
+    it { should have_many :show_genres }
+    it { should have_many(:genres).through(:show_genres) }
+  end
 end
