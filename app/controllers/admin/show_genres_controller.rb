@@ -3,6 +3,9 @@ class Admin::ShowGenresController < ApplicationController
     # grab the show we want to add genres to
     show = Show.find(params[:show_id])
 
+    # remove all current genres for show
+    show.genres.destroy_all
+
     # clean up the empty string from this array
     params[:show_genre][:id].reject!(&:empty?)
 

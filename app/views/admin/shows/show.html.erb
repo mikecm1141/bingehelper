@@ -24,8 +24,8 @@
   <%=
      f.select :id,
      @genres.map {|genre| [genre.title, genre.id]},
-     {},
-     { :multiple => true, size: 10, id: 'genre-box' }
+     { selected: @show.genres.map(&:id) },
+     { multiple: true, size: 10, id: 'genre-box' }
   %>
 
   <%= f.submit 'Update Genres' %>
