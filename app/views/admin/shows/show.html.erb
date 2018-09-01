@@ -14,7 +14,7 @@
   <h5><strong>Genres:</strong>
     <% @show.genres.each do |genre| %>
       <div class="chip">
-        <%= "#{genre.title}" %>
+        <%= link_to genre.title, admin_genre_path(genre) %>
       </div>
     <% end %>
   </h5>
