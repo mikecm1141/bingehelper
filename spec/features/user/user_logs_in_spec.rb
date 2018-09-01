@@ -3,7 +3,7 @@ require 'rails_helper'
 describe 'As a user' do
   describe 'When I visit /' do
     before(:each) do
-      @user = User.create!(name: 'Mike', email: 'mikecm@gmail.com', password: 'password', password_confirmation: 'password')
+      @user = create(:user)
     end
     scenario 'I click Log In and fill in proper credentials to login successfully' do
       visit login_path
