@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe 'As an admin' do
   before(:each) do
-    @genre = Genre.create!(title: 'Comedy')
+    @genre = create(:genre, title: 'Comedy')
   end
   describe 'when I visit /admin/genres/1/edit' do
     scenario 'I can edit an existing genre' do
@@ -15,7 +15,7 @@ describe 'As an admin' do
       expect(page).to have_content('Action')
     end
     scenario 'It fails when attempting to update with duplicate genre' do
-      Genre.create!(title: 'Action')
+      create(:genre, title: 'Action')
 
       visit edit_admin_genre_path(@genre)
 

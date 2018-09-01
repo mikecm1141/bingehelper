@@ -3,7 +3,7 @@ require 'rails_helper'
 describe 'As an admin' do
   describe 'when I want to delete a show' do
     before(:each) do
-      @genre = Genre.create!(title: 'Comedy')
+      @genre = create(:genre)
     end
     scenario 'I click delete on a genre show page and it takes me to the Genre index' do
       visit admin_genre_path(@genre)

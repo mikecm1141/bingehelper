@@ -3,9 +3,7 @@ require 'rails_helper'
 describe 'As an admin' do
   describe 'when I visit /admin/shows' do
     before(:each) do
-      @genre1 = Genre.create!(title: 'Comedy')
-      @genre2 = Genre.create!(title: 'Action')
-      @genre3 = Genre.create!(title: 'Sci-Fi')
+      @genre1, @genre2, @genre3 = create_list(:genre, 3)
     end
     scenario 'I see a list of all genres' do
       visit admin_genres_path
