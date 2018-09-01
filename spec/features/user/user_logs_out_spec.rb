@@ -10,8 +10,6 @@ describe 'As a user' do
 
       find("#desktop-log-out").click
 
-      save_and_open_page
-
       expect(current_path).to eq(login_path)
       expect(page).to have_content('Logged out.')
     end

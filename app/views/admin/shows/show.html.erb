@@ -21,6 +21,7 @@
 </div>
 
 <h5>Edit Genres for <%= @show.title %></h5>
+<h6><%= link_to 'Add New Genre', new_admin_genre_path %>
 <%= form_for [:admin, @show, @new_show_genres] do |f| %>
   <%= f.label :title %>
   <%=
