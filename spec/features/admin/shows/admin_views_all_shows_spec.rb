@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe 'As an admin' do
   before(:each) do
-    admin = User.create!(name: 'Admin', email: 'admin', password: 'admin', password_confirmation: 'admin', admin: true)
+    admin = create(:admin)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
   end
   describe 'when I visit /admin/shows' do

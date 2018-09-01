@@ -3,7 +3,7 @@ require 'rails_helper'
 describe 'As an admin' do
   describe 'when I visit /admin/genre/:id' do
     before(:each) do
-      @genre = Genre.create!(title: 'Comedy')
+      @genre = create(:genre)
     end
     scenario 'I see the show details' do
       visit admin_genre_path(@genre)

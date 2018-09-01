@@ -11,9 +11,9 @@ describe 'As a visitor' do
   end
 end
 describe 'As a user' do
-  describe 'when I visist any administrator page' do
+  describe 'when I visit any administrator page' do
     it 'redirects to /login and gives me an error message' do
-      user = User.create!(name: 'Mike', email: 'mikecm@gmail.com', password: 'password', password_confirmation: 'password')
+      user = create(:user)
 
       visit login_path
 
