@@ -10,5 +10,8 @@ describe Show, type: :model do
   describe 'relationships' do
     it { should have_many :show_genres }
     it { should have_many(:genres).through(:show_genres) }
+    it { should have_many :show_ratings }
+    it { should have_many(:ratings).through(:show_ratings) }
+    it { should have_many(:users).through(:ratings) }
   end
 end
