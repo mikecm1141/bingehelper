@@ -13,7 +13,9 @@
 <div class="show-genres">
   <h5><strong>Genres:</strong>
     <% @show.genres.each do |genre| %>
-      <%= "#{genre.title}" %>
+      <div class="chip">
+        <%= "#{genre.title}" %>
+      </div>
     <% end %>
   </h5>
 </div>
@@ -24,8 +26,8 @@
   <%=
      f.select :id,
      @genres.map {|genre| [genre.title, genre.id]},
-     {},
-     { :multiple => true, size: 10, id: 'genre-box' }
+     { selected: @show.genres.map(&:id) },
+     { multiple: true, size: 10, id: 'genre-box' }
   %>
 
   <%= f.submit 'Update Genres' %>
