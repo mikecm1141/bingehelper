@@ -7,4 +7,5 @@ class Show < ApplicationRecord
   has_many :show_ratings
   has_many :genres, through: :show_genres, dependent: :destroy
   has_many :ratings, through: :show_ratings
+  has_many :users, through: :ratings
 end
