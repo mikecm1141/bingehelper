@@ -13,7 +13,9 @@
 <div class="show-genres">
   <h5><strong>Genres:</strong>
     <% @show.genres.each do |genre| %>
-      <%= "#{genre.title}" %>
+      <div class="chip">
+        <%= "#{genre.title}" %>
+      </div>
     <% end %>
   </h5>
 </div>
