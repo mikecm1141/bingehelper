@@ -4,5 +4,5 @@ class Show < ApplicationRecord
   validates_numericality_of :year
 
   has_many :show_genres
-  has_many :genres, through: :show_genres
+  has_many :genres, through: :show_genres, dependent: :destroy
 end

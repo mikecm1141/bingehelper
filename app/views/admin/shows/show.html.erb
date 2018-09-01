@@ -14,13 +14,14 @@
   <h5><strong>Genres:</strong>
     <% @show.genres.each do |genre| %>
       <div class="chip">
-        <%= "#{genre.title}" %>
+        <%= link_to genre.title, admin_genre_path(genre) %>
       </div>
     <% end %>
   </h5>
 </div>
 
 <h5>Edit Genres for <%= @show.title %></h5>
+<h6><%= link_to 'Add New Genre', new_admin_genre_path %>
 <%= form_for [:admin, @show, @new_show_genres] do |f| %>
   <%= f.label :title %>
   <%=
