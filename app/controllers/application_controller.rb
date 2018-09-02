@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-  helper_method :current_user, :show_rated?
+  helper_method :current_user, :show_rated?, :current_user_rating
 
   def current_user
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
@@ -8,6 +8,10 @@ class ApplicationController < ActionController::Base
 
   def show_rated?(show, user)
     !show.users.include?(user)
+  end
+
+  def current_user_rating(show, user)
+    show.ratings.find_by(user_id: current_user.id)
   end
 
   def authorize

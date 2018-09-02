@@ -23,6 +23,14 @@
       <p>Your Review Score: <%= current_user.score(@show) %></p>
       <p>Your BingeCount: <%= current_user.bingecount(@show) %></p>
       <p>Your BingeScore: <%= current_user.bingescore(@show) %></p>
+      <p>
+        <%=
+            link_to 'Delete Rating',
+            show_user_rating_path(@show, current_user_rating(@show, current_user)),
+            method: :delete,
+            data: { confirm: "Delete rating for #{@show.title}?" }
+        %>
+     </p>
     </div>
 <% end %>
 
