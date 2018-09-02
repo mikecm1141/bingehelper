@@ -14,31 +14,22 @@ describe User, type: :model do
     it { should have_many(:shows).through(:show_ratings) }
   end
   describe 'Instance Methods' do
+    before(:each) do
+      @show = create(:show)
+      @rating = create(:rating)
+      @user = User.find(@rating.user_id)
+      @show.ratings << @rating
+    end
     it '#score(show)' do
-      show = create(:show)
-      rating = create(:rating)
-      user = User.find(rating.user_id)
-      show.ratings << rating
-
-      expect(user.score(show)).to eq(rating.score)
+      expect(@user.score(@show)).to eq(@rating.score)
     end
     it '#bingecount(show)' do
-      show = create(:show)
-      rating = create(:rating)
-      user = User.find(rating.user_id)
-      show.ratings << rating
-
-      expect(user.bingecount(show)).to eq(rating.bingecount)
+      expect(@user.bingecount(@show)).to eq(@rating.bingecount)
     end
     it '#bingescore(show)' do
-      show = create(:show)
-      rating = create(:rating)
-      user = User.find(rating.user_id)
-      show.ratings << rating
+      expected_result = (@rating.bingecount * @rating.score) / 2.0
 
-      expected_result = (rating.bingecount * rating.score) / 2.0
-
-      expect(user.bingescore(show)).to eq(expected_result)
+      expect(@user.bingescore(@show)).to eq(expected_result)
     end
   end
 end

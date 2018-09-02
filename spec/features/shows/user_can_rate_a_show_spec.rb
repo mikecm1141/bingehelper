@@ -21,12 +21,11 @@ describe 'As a user' do
         expect(page).to have_content("Your BingeCount: #{@user.bingecount(@show)}")
         expect(page).to have_content("Your BingeScore: #{@user.bingescore(@show)}")
       end
-
-      # within("#stats-all") do
-      #   expect(page).to have_content("Average User Score: #{@show.score}")
-      #   expect(page).to have_content("Average BingeCount: #{@show.bingecount}")
-      #   expect(page).to have_content("BingeScore: #{@show.bingescore}")
-      # end
+      within("#stats-all") do
+        expect(page).to have_content("Average Review Score: #{@show.avg_score}")
+        expect(page).to have_content("Average BingeCount: #{@show.avg_bingecount}")
+        expect(page).to have_content("BingeScore: #{@show.bingescore}")
+      end
     end
   end
 end

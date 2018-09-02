@@ -8,4 +8,16 @@ class Show < ApplicationRecord
   has_many :genres, through: :show_genres, dependent: :destroy
   has_many :ratings, through: :show_ratings
   has_many :users, through: :ratings
+
+  def avg_score
+    ratings.average(:score).round(1)
+  end
+
+  def avg_bingecount
+    ratings.average(:bingecount).round(1)
+  end
+
+  def bingescore
+  (  (avg_score * avg_bingecount) / 2.0).round(1)
+  end
 end
