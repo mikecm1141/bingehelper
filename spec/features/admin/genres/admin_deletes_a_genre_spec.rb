@@ -4,6 +4,8 @@ describe 'As an admin' do
   describe 'when I want to delete a show' do
     before(:each) do
       @genre = create(:genre)
+      admin  = create(:admin)
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
     end
     scenario 'I click delete on a genre show page and it takes me to the Genre index' do
       visit admin_genre_path(@genre)

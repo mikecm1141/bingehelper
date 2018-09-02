@@ -8,7 +8,7 @@ describe 'As a user' do
     scenario 'I click Log In and fill in proper credentials to login successfully' do
       visit login_path
 
-      fill_in :login_email, with: @user.email
+      fill_in :login_email,    with: @user.email
       fill_in :login_password, with: @user.password
       click_on 'Login'
 
@@ -19,7 +19,7 @@ describe 'As a user' do
     scenario 'I click Log In and give invalid credentials to not login successfully' do
       visit login_path
 
-      fill_in :login_email, with: 'mikecm2@gmail.com'
+      fill_in :login_email,    with: 'mikecm2@gmail.com'
       fill_in :login_password, with: 'pasword'
       click_on 'Login'
 
