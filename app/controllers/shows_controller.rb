@@ -5,6 +5,7 @@ class ShowsController < ApplicationController
 
   def show
     @show   = Show.find(params[:id])
+    @genres = @show.genres.order(title: :asc)
     @rating = Rating.new
   end
 end

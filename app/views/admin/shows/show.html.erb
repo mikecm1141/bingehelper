@@ -1,6 +1,6 @@
 <h4 class="center-align"><%= @show.title %> (<%= @show.year %>)</h4>
 <div class="show-genres center-align">
-  <% @show.genres.each do |genre| %>
+  <% @show_genres.each do |genre| %>
     <div class="chip">
       <%= link_to genre.title, admin_genre_path(genre) %>
     </div>

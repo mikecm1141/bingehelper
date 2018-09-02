@@ -1,45 +1,50 @@
 <h4 class="center-align"><%= @show.title %> (<%= @show.year %>)</h4>
 <div class="show-genres center-align">
-  <% @show.genres.each do |genre| %>
+  <% @genres.each do |genre| %>
     <div class="chip">
       <%= link_to genre.title, admin_genre_path(genre) %>
     </div>
   <% end %>
 </div>
 
-<% if current_user && show_rated?(@show, current_user) %>
-    <h5>Submit Rating for <%= @show.title %></h5>
-    <%= form_for [@show, :user, @rating] do |f| %>
-      <%= f.label  :score, 'Show Review Score' %>
-      <%= f.select :score, options_for_select(1..10) %>
+<div class="row">
+  <div class="col s6">
+    <% if current_user && show_rated?(@show, current_user) %>
+        <h5>Submit Rating for <%= @show.title %></h5>
+        <%= form_for [@show, :user, @rating] do |f| %>
+          <%= f.label  :score, 'Show Review Score' %>
+          <%= f.select :score, options_for_select(1..10) %>
 
-      <%= f.label  :bingecount, 'Episodes Watched Per Session' %>
-      <%= f.select :bingecount, options_for_select(1..20) %>
+          <%= f.label  :bingecount, 'Episodes Watched Per Session' %>
+          <%= f.select :bingecount, options_for_select(1..20) %>
 
-      <%= f.submit 'Submit Rating' %>
+          <%= f.submit 'Submit Rating' %>
+        <% end %>
+      <% elsif current_user %>
+        <div id="stats-user-<%= current_user.id %>">
+          <p>Your Review Score: <%= current_user.score(@show) %></p>
+          <p>Your BingeCount: <%= current_user.bingecount(@show) %></p>
+          <p>Your BingeScore: <%= current_user.bingescore(@show) %></p>
+          <p>
+            <%=
+                link_to 'Delete Rating',
+                show_user_rating_path(@show, current_user_rating(@show, current_user)),
+                method: :delete,
+                data: { confirm: "Delete rating for #{@show.title}?" }
+            %>
+         </p>
+        </div>
     <% end %>
-  <% elsif current_user %>
-    <div id="stats-user-<%= current_user.id %>">
-      <p>Your Review Score: <%= current_user.score(@show) %></p>
-      <p>Your BingeCount: <%= current_user.bingecount(@show) %></p>
-      <p>Your BingeScore: <%= current_user.bingescore(@show) %></p>
-      <p>
-        <%=
-            link_to 'Delete Rating',
-            show_user_rating_path(@show, current_user_rating(@show, current_user)),
-            method: :delete,
-            data: { confirm: "Delete rating for #{@show.title}?" }
-        %>
-     </p>
-    </div>
-<% end %>
-
-<% if @show.ratings.empty? %>
-  <p>No rating information for this show yet.</p>
-<% else %>
-  <div id="stats-all">
-    <p>Average Review Score: <%= @show.avg_score %></p>
-    <p>Average BingeCount: <%= @show.avg_bingecount %></p>
-    <p>BingeScore: <%= @show.bingescore %></p>
   </div>
-<% end %>
+  <div class="col s6">
+    <% if @show.ratings.empty? %>
+      <p>No rating information for this show yet.</p>
+    <% else %>
+      <div id="stats-all">
+        <p>Average Review Score: <%= @show.avg_score %></p>
+        <p>Average BingeCount: <%= @show.avg_bingecount %></p>
+        <p>BingeScore: <%= @show.bingescore %></p>
+      </div>
+    <% end %>
+  </div>
+</div>
