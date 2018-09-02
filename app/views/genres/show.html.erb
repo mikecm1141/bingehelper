@@ -1,7 +1,12 @@
 <h4 class="center-align"><%= @genre.title %></h4>
-<ul class="collection with-header small-container">
-  <li class="collection-header"><h6>Shows in this Genre</h6></li>
-  <% @genre.shows.each do |show| %>
-    <%= link_to show.title, show_path(show), class: "collection-item" %>
-  <% end %>
-</ul>
+
+<% if @genre.shows.empty? %>
+  <p class="center-align">There are currently no shows listed in this genre.</p>
+<% else %>
+  <ul class="collection with-header small-container">
+    <li class="collection-header"><h6>Shows in this Genre</h6></li>
+    <% @genre.shows.each do |show| %>
+      <%= link_to show.title, show_path(show), class: "collection-item" %>
+    <% end %>
+  </ul>
+<% end %>
