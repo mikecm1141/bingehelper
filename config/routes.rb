@@ -18,7 +18,7 @@ Rails.application.routes.draw do
 
   resources :shows, only: %i[show index] do
     namespace :user do
-      resources :ratings, only: %i[create]
+      resources :ratings, only: %i[create destroy]
     end
   end
   resources :genres, only: %i[index show]

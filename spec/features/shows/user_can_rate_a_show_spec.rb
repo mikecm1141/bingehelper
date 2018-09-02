@@ -27,6 +27,19 @@ describe 'As a user' do
         expect(page).to have_content("BingeScore: #{@show.bingescore}")
       end
     end
+    it 'lets me delete my rating to make a new one' do
+      @show.ratings << create(:rating, user: @user)
+
+      visit show_path(@show)
+
+      expect(page).to have_content("Your Review Score: #{@user.score(@show)}")
+
+      click_link 'Delete Rating'
+
+      expect(current_path).to eq(show_path(@show))
+      expect(page).to have_content('No rating information for this show yet.')
+      expect(page).to_not have_content("Your Review Score:")
+    end
   end
 end
 describe 'As a visitor' do
