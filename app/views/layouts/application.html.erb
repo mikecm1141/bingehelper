@@ -61,11 +61,11 @@
         <li><%= link_to 'Log In', login_path, id: 'mobile-log-in' %></li>
       <% end %>
     </ul>
-    <div class="container">
+    <main class="container">
       <% flash.each do |name, msg| %>
         <%= content_tag :div, msg, class: name %>
       <% end %>
       <%= yield %>
-    </div>
+    </main>
   </body>
 </html>

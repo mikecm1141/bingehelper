@@ -3,6 +3,10 @@ select {
   margin-bottom: 10px;
 }
 
+.poster-img {
+  max-height: 525px;
+}
+
 .table-fit {
   width: 1px;
 }
@@ -14,5 +18,5 @@ select {
 
 #genre-box {
   width: 350px;
-  height: 100px;
+  height: 200px;
 }
