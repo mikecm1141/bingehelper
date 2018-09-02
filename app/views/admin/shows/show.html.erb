@@ -10,14 +10,12 @@
   %>
 </h5>
 
-<div class="show-genres">
-  <h5><strong>Genres:</strong>
-    <% @show.genres.each do |genre| %>
-      <div class="chip">
-        <%= link_to genre.title, admin_genre_path(genre) %>
-      </div>
-    <% end %>
-  </h5>
+<div class="show-genres center-align">
+  <% @show.genres.each do |genre| %>
+    <div class="chip">
+      <%= link_to genre.title, admin_genre_path(genre) %>
+    </div>
+  <% end %>
 </div>
 
 <h5>Edit Genres for <%= @show.title %></h5>

@@ -23,7 +23,6 @@
           <li><%= link_to 'Shows', admin_shows_path %></li>
           <li><%= link_to 'Genres', '#' %></li>
           <li><a href="badges.html">Ratings</a></li>
-          <li><a href="mobile.html">Tags</a></li>
           <li>&emsp;&emsp;&emsp;</li>
           <% if current_user %>
             <li><%= link_to current_user.email, settings_user_path(current_user), id: 'desktop-user-link' %></li>
@@ -43,7 +42,6 @@
             <li class="tab"><%= link_to 'Shows', admin_shows_path %></li>
             <li class="tab"><%= link_to 'Genres', admin_genres_path %></li>
             <li class="tab"><a href="#">Ratings</a></li>
-            <li class="tab"><a href="#">Tags</a></li>
           </ul>
         </div>
       <% end %>
@@ -54,7 +52,6 @@
       <li><%= link_to 'Shows', admin_shows_path %></li>
       <li><a href="badges.html">Ratings</a></li>
       <li><a href="collapsible.html">Genres</a></li>
-      <li><a href="mobile.html">Tags</a></li>
       <li>&emsp;</li>
       <% if current_user %>
         <li><%= link_to current_user.email, settings_user_path(current_user), id: 'mobile-user-link'  %></li>
