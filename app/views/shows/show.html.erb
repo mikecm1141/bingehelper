@@ -27,3 +27,13 @@
       <p>Your BingeScore: <%= current_user.bingescore(@show) %></p>
     </div>
 <% end %>
+
+<% if @show.ratings.empty? %>
+  <p>No rating information for this show yet.</p>
+<% else %>
+  <div id="stats-all">
+    <p>Average Review Score: <%= @show.avg_score %></p>
+    <p>Average BingeCount: <%= @show.avg_bingecount %></p>
+    <p>BingeScore: <%= @show.bingescore %></p>
+  </div>
+<% end %>
