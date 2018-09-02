@@ -21,6 +21,6 @@ Rails.application.routes.draw do
       resources :ratings, only: %i[create]
     end
   end
-
+  resources :genres, only: %i[index show]
   resources :users, only: %i[new create show]
 end
