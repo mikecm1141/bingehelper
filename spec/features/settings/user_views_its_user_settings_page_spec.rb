@@ -22,7 +22,7 @@ describe 'As a user' do
 
       expect(current_path).to eq(edit_settings_user_path(@user))
 
-      fill_in :user_password, with: 'pass2'
+      fill_in :user_password,              with: 'pass2'
       fill_in :user_password_confirmation, with: 'pass2'
       click_on 'Change Password'
 

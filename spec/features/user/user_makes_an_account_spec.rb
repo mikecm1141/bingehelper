@@ -9,9 +9,9 @@ describe 'As a visitor' do
 
       expect(current_path).to eq new_user_path
 
-      fill_in :user_name, with: 'Mike'
-      fill_in :user_email, with: 'mikecm@gmail.com'
-      fill_in :user_password, with: 'password'
+      fill_in :user_name,                  with: 'Mike'
+      fill_in :user_email,                 with: 'mikecm@gmail.com'
+      fill_in :user_password,              with: 'password'
       fill_in :user_password_confirmation, with: 'password'
       click_on 'Create Account'
 
@@ -21,9 +21,9 @@ describe 'As a visitor' do
     scenario 'I fill in form incorrectly and am given an error message' do
       visit new_user_path
 
-      fill_in :user_name, with: ''
-      fill_in :user_email, with: 'mikecm@gmail.com'
-      fill_in :user_password, with: 'password'
+      fill_in :user_name,                  with: ''
+      fill_in :user_email,                 with: 'mikecm@gmail.com'
+      fill_in :user_password,              with: 'password'
       fill_in :user_password_confirmation, with: 'notthesame'
       click_on 'Create Account'
 

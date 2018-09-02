@@ -1,4 +1,6 @@
 class User::RatingsController < ApplicationController
+  before_action :authorize
+  
   def create
     show = Show.find(params[:show_id])
     rating = current_user.ratings.create(rating_params)

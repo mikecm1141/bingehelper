@@ -4,7 +4,7 @@ describe 'As an admin' do
   before(:each) do
     admin = create(:admin)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
-    @show = create(:show)
+    @show  = create(:show)
     @genre = create(:genre)
     @show.genres << @genre
   end

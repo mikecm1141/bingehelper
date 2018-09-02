@@ -1,6 +1,10 @@
 require 'rails_helper'
 
 describe 'As an admin' do
+  before(:each) do
+    admin = create(:admin)
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
+  end
   describe 'when I visit /admin/genres/new' do
     scenario 'I fill out the genre form and add a new genre' do
       visit new_admin_genre_path

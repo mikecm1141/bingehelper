@@ -3,6 +3,8 @@ require 'rails_helper'
 describe 'As an admin' do
   describe 'when I visit /admin/shows' do
     before(:each) do
+      admin = create(:admin)
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
       @genre1, @genre2, @genre3 = create_list(:genre, 3)
     end
     scenario 'I see a list of all genres' do

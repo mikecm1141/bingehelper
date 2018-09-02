@@ -8,6 +8,8 @@ describe 'As an admin' do
 
       @genre.shows << @show1
       @genre.shows << @show2
+      admin = create(:admin)
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
     end
     scenario 'I see the genre details' do
       visit admin_genre_path(@genre)
