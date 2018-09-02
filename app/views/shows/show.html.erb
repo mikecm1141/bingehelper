@@ -1,7 +1,7 @@
 <h4 class="center-align"><%= @show.title %> (<%= @show.year %>)</h4>
 <div class="show-genres center-align">
   <% @genres.each do |genre| %>
-    <div class="chip">
+    <div class="chip hoverable">
       <%= link_to genre.title, admin_genre_path(genre) %>
     </div>
   <% end %>
@@ -9,7 +9,7 @@
 
 <div class="row">
   <div class="col s6">
-    <%= image_tag("shows/#{@show.image}", class: "responsive-img poster-img right" ) %>
+    <%= image_tag("shows/#{@show.image}", class: "responsive-img poster-img right hoverable" ) %>
   </div>
   <div class="col s6">
     <% if current_user && show_rated?(@show, current_user) %>
