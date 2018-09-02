@@ -1,4 +1,11 @@
 <h4 class="center-align"><%= @show.title %> (<%= @show.year %>)</h4>
+<div class="show-genres center-align">
+  <% @show.genres.each do |genre| %>
+    <div class="chip">
+      <%= link_to genre.title, admin_genre_path(genre) %>
+    </div>
+  <% end %>
+</div>
 <h5 class="center-align">
   <%= link_to 'Edit', edit_admin_show_path(@show), class: 'waves-effect waves-light btn-small' %>
   <%=
@@ -9,14 +16,6 @@
       class: 'waves-effect waves-light btn-small'
   %>
 </h5>
-
-<div class="show-genres center-align">
-  <% @show.genres.each do |genre| %>
-    <div class="chip">
-      <%= link_to genre.title, admin_genre_path(genre) %>
-    </div>
-  <% end %>
-</div>
 
 <h5>Edit Genres for <%= @show.title %></h5>
 <h6><%= link_to 'Add New Genre', new_admin_genre_path %>
