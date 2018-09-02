@@ -3,6 +3,10 @@ select {
   margin-bottom: 10px;
 }
 
+.poster-img {
+  max-height: 525px;
+}
+
 .table-fit {
   width: 1px;
 }
