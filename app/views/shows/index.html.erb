@@ -1,0 +1,12 @@
+<h4 class="center-align">Show Index</h4>
+
+<table class="striped table-responsive">
+  <% @shows.each do |show| %>
+    <tr>
+      <td id="show-year-id-<%= show.id %>">
+        <%= link_to show.title, show_path(show) %>
+        (<%= show.year %>)
+      </td>
+    </tr>
+  <% end %>
+</table>

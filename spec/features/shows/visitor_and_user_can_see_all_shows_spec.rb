@@ -3,7 +3,7 @@ require 'rails_helper'
 describe 'As a visitor or user' do
   describe 'when I visit /shows' do
     before(:each) do
-      @show1, @show2 = create_list(:shows, 2)
+      @show1, @show2 = create_list(:show, 2)
     end
     scenario 'I see a list of all TV shows' do
       visit shows_path

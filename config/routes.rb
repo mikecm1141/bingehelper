@@ -16,7 +16,7 @@ Rails.application.routes.draw do
     resources :users, only: %i[show edit update]
   end
 
-  resources :shows, only: %i[show] do
+  resources :shows, only: %i[show index] do
     namespace :user do
       resources :ratings, only: %i[create]
     end
