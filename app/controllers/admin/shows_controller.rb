@@ -49,7 +49,7 @@ class Admin::ShowsController < ApplicationController
   private
 
   def show_params
-    params.require(:show).permit(:title, :year)
+    params.require(:show).permit(:title, :year, :runtime)
   end
 
   def set_show

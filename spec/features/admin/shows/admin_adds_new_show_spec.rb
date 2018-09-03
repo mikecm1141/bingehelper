@@ -11,6 +11,7 @@ describe 'As an admin' do
 
       fill_in :show_title, with: 'Futurama'
       select '2002', from: :show_year
+      fill_in :show_runtime, with: '60'
       click_on 'Create Show'
 
       expect(current_path).to eq(admin_shows_path)
@@ -23,6 +24,7 @@ describe 'As an admin' do
 
       fill_in :show_title, with: 'Futurama'
       select '2002', from: :show_year
+      fill_in :show_runtime, with: '22'
       click_on 'Create Show'
 
       expect(current_path).to eq(new_admin_show_path)
@@ -35,6 +37,27 @@ describe 'As an admin' do
 
       expect(current_path).to eq(new_admin_show_path)
       expect(page).to have_content('Title can\'t be blank')
+    end
+    scenario 'I enter no runtime and see a failure message' do
+      visit new_admin_show_path
+
+      fill_in :show_title, with: 'Futurama'
+      select '2002', from: :show_year
+      click_on 'Create Show'
+
+      expect(current_path).to eq(new_admin_show_path)
+      expect(page).to have_content('Runtime can\'t be blank')
+    end
+    scenario 'I enter a negative runtime and see a failure message' do
+      visit new_admin_show_path
+
+      fill_in :show_title, with: 'Futurama'
+      select '2002', from: :show_year
+      fill_in :show_runtime, with: '-22'
+      click_on 'Create Show'
+
+      expect(current_path).to eq(new_admin_show_path)
+      expect(page).to have_content('Runtime must be greater than 0')
     end
   end
 end
