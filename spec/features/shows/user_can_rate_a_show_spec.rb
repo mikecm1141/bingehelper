@@ -11,8 +11,8 @@ describe 'As a user' do
     it 'allows me to review a show and add a watch count' do
       visit show_path(@show)
 
-      select '8', from: :rating_score
-      select '4', from: :rating_bingecount
+      select '8/10', from: :rating_score
+      select '4 episodes', from: :rating_bingecount
       click_on 'Submit Rating'
 
       expect(current_path).to eq(show_path(@show))
