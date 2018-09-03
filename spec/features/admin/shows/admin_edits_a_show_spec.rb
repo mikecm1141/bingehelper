@@ -40,5 +40,27 @@ describe 'As an admin' do
       expect(current_path).to eq(edit_admin_show_path(@show))
       expect(page).to have_content('Title can\'t be blank')
     end
+    scenario 'I update with a negative runtime and see a failure message' do
+      show = create(:show, title: 'Futurama')
+
+      visit edit_admin_show_path(show)
+
+      fill_in :show_runtime, with: '-5'
+      click_on 'Update Show'
+
+      expect(current_path).to eq(edit_admin_show_path(show))
+      expect(page).to have_content('Runtime must be greater than 0')
+    end
+    scenario 'I update with a floating runtime and see a failure message' do
+      show = create(:show, title: 'Futurama')
+
+      visit edit_admin_show_path(show)
+
+      fill_in :show_runtime, with: '2.2'
+      click_on 'Update Show'
+
+      expect(current_path).to eq(edit_admin_show_path(show))
+      expect(page).to have_content('Runtime must be an integer')
+    end
   end
 end

@@ -18,6 +18,7 @@ class Admin::ShowsController < ApplicationController
 
   def create
     show = Show.new(show_params)
+    show.image = 'placeholder.png'
     if show.save
       flash['card-panel green center-align'] = "'#{show.title}' has been added!"
       redirect_to admin_shows_path
@@ -49,7 +50,7 @@ class Admin::ShowsController < ApplicationController
   private
 
   def show_params
-    params.require(:show).permit(:title, :year)
+    params.require(:show).permit(:title, :year, :runtime)
   end
 
   def set_show

@@ -3,7 +3,10 @@
   <%= f.text_field :title, autofocus: true %>
 
   <%= f.label  :year %>
-  <%= f.select :year, (Date.today.year-65)..(Date.today.year), :selected => @show.year || Time.current.year %>
+  <%= f.select :year, (Date.today.year-65)..(Date.today.year), selected: @show.year || Time.current.year %>
+
+  <%= f.label :runtime %>
+  <%= f.text_field :runtime %>
 
   <%= f.submit class: 'btn waves-effect waves-light' %>
 <% end %>
