@@ -1,0 +1,39 @@
+<h4 class="center-align">Ratings for <%= current_user.name %></h4>
+
+<% if current_user.ratings.empty? %>
+  <span class="flow-text">You have submitted no ratings yet.</span>
+<% else %>
+  <table class="striped table-responsive">
+    <thead>
+      <tr>
+        <th>Show Title</th>
+        <th class="center-align">Your Review Score</th>
+        <th class="center-align">Your BingeCount</th>
+        <th class="center-align table-fit">Remove</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% current_user.ratings.each do |rating| %>
+        <tr>
+          <td>
+            <%= rating.show.title %>
+          </td>
+          <td class="user-rating-cell center-align" id="rating-score-id-<%= rating.id %>">
+            <%= rating.score %>/10
+          </td>
+          <td class="user-rating-cell center-align" id="rating-bingecount-id-<%= rating.id %>"">
+            <%= rating.bingecount %> episodes
+          </td>
+          <td class="center-align">
+            <%=
+                link_to 'Delete',
+                show_user_rating_path(rating.show, current_user_rating(rating.show, current_user)),
+                method: :delete,
+                data: { confirm: "Delete rating for #{rating.show.title}?" }
+            %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
