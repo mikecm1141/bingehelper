@@ -29,15 +29,14 @@
         <div id="stats-user-<%= current_user.id %>">
           <p class="flow-text">
             Your Review Score: <%= current_user.score(@show) %>/10<br />
-            Your BingeCount: <%= current_user.bingecount(@show) %><br />
+            Your BingeCount: <%= current_user.bingecount(@show) %> episodes<br />
             Your BingeScore: <%= current_user.bingescore(@show) %><br />
-
-              <%=
-                  link_to 'Delete Rating',
-                  show_user_rating_path(@show, current_user_rating(@show, current_user)),
-                  method: :delete,
-                  data: { confirm: "Delete rating for #{@show.title}?" }
-              %>
+            <%=
+                link_to 'Delete Rating',
+                show_user_rating_path(@show, current_user_rating(@show, current_user)),
+                method: :delete,
+                data: { confirm: "Delete rating for #{@show.title}?" }
+            %>
           </p>
         </div>
     <% end %>
@@ -49,7 +48,7 @@
       <div id="stats-all">
         <p class="flow-text">
           Average Review Score: <%= @show.avg_score %>/10<br />
-          Average BingeCount: <%= @show.avg_bingecount %><br />
+          Average BingeCount: <%= @show.avg_bingecount %> episodes<br />
           BingeScore: <%= @show.bingescore %>
         </p>
       </div>
