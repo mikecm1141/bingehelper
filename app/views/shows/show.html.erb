@@ -6,7 +6,9 @@
     </div>
   <% end %>
 </div>
-
+<div class="center-align">
+  <p class="flow-text">Episode Runtime: <%= @show.runtime %> minutes</p>
+</div>
 <div class="row">
   <div class="col s6">
     <%= image_tag("shows/#{@show.image}", class: "responsive-img poster-img right hoverable" ) %>
@@ -15,18 +17,18 @@
     <% if current_user && show_rated?(@show, current_user) %>
         <h5>Submit Rating for <%= @show.title %></h5>
         <%= form_for [@show, :user, @rating] do |f| %>
-          <%= f.label  :score, 'Show Review Score' %>
-          <%= f.select :score, options_for_select(1..10) %>
+          <%= f.label  :score, "Your Review For #{@show.title}" %>
+          <%= f.select :score, options_for_select((1..10).map { |n| ["#{n}/10", n] }) %>
 
-          <%= f.label  :bingecount, 'Episodes Watched Per Session' %>
-          <%= f.select :bingecount, options_for_select(1..20) %>
+          <%= f.label  :bingecount, "#{@show.title} Episodes Watched Per Session" %>
+          <%= f.select :bingecount, options_for_select((1..20).map { |n| ["#{n} episodes", n] }) %>
 
           <%= f.submit 'Submit Rating' %>
         <% end %>
       <% elsif current_user %>
         <div id="stats-user-<%= current_user.id %>">
           <p class="flow-text">
-            Your Review Score: <%= current_user.score(@show) %><br />
+            Your Review Score: <%= current_user.score(@show) %>/10<br />
             Your BingeCount: <%= current_user.bingecount(@show) %><br />
             Your BingeScore: <%= current_user.bingescore(@show) %><br />
 
@@ -46,7 +48,7 @@
     <% else %>
       <div id="stats-all">
         <p class="flow-text">
-          Average Review Score: <%= @show.avg_score %><br />
+          Average Review Score: <%= @show.avg_score %>/10<br />
           Average BingeCount: <%= @show.avg_bingecount %><br />
           BingeScore: <%= @show.bingescore %>
         </p>
