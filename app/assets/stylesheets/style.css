@@ -11,6 +11,10 @@ select {
   width: 1px;
 }
 
+.user-rating-cell {
+  width: 150px;
+}
+
 .small-container {
   width: 40%;
   margin: auto;
