@@ -14,6 +14,7 @@ describe 'As an admin' do
 
       expect(page).to have_content(@show.title)
       expect(page).to have_content(@show.year)
+      expect(page).to have_content("Episode Runtime: #{@show.runtime}")
     end
     it 'has links to edit and delete that show' do
       visit admin_show_path(@show)

@@ -2,7 +2,7 @@ class Show < ApplicationRecord
   validates_presence_of     :title, :year, :runtime
   validates_uniqueness_of   :title
   validates_numericality_of :year
-  validates_numericality_of :runtime, greater_than: 0
+  validates_numericality_of :runtime, greater_than: 0, only_integer: true
 
   has_many :show_genres
   has_many :show_ratings

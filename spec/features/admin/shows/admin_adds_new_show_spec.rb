@@ -59,5 +59,16 @@ describe 'As an admin' do
       expect(current_path).to eq(new_admin_show_path)
       expect(page).to have_content('Runtime must be greater than 0')
     end
+    scenario 'I enter a floating runtime and see a failure message' do
+      visit new_admin_show_path
+
+      fill_in :show_title, with: 'Futurama'
+      select '2002', from: :show_year
+      fill_in :show_runtime, with: '32.0'
+      click_on 'Create Show'
+
+      expect(current_path).to eq(new_admin_show_path)
+      expect(page).to have_content('Runtime must be an integer')
+    end
   end
 end

@@ -9,7 +9,8 @@ describe Show, type: :model do
     it { should validate_presence_of     :runtime }
     it do
       should validate_numericality_of(:runtime).
-        is_greater_than(0)
+        is_greater_than(0).
+        only_integer
     end
   end
   describe 'relationships' do
