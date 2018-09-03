@@ -6,7 +6,8 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-
+# Make the default admin
+puts 'Creating default admin account.'
 User.create(
   name: 'Mike',
   email: 'mikecm@gmail.com',
@@ -14,3 +15,13 @@ User.create(
   password_confirmation: 'password',
   admin: true
 )
+puts 'Created default admin account.'
+
+# Make some default genres
+puts 'Creating default genres...'
+default_genres = %w[Action Adventure Comedy Reality Educational Romance Thriller Suspense Drama Crime Documentary Fantasy History Science Sci-Fi]
+default_genres.sort!
+default_genres.each do |category|
+  Genre.create!(title: category)
+end
+puts 'Created default genres.'
