@@ -1,5 +1,4 @@
-class Admin::GenresController < ApplicationController
-  before_action :admin_authorize
+class Admin::GenresController < Admin::BaseController
   before_action :set_genre, only: %i[edit show update destroy]
 
   def index

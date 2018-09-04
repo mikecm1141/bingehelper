@@ -7,6 +7,8 @@ class User < ApplicationRecord
   has_many :ratings
   has_many :shows, through: :ratings
 
+  enum role: %w[default admin]
+
   def score(show)
     ratings.find_by(show_id: show.id).score
   end

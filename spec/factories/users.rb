@@ -4,7 +4,7 @@ FactoryBot.define do
     sequence(:email)      { |n| "user#{n}@usertest.org" }
     password              { 'password'                  }
     password_confirmation { 'password'                  }
-    admin                 { false                       }
+    role                  { 0                           }
   end
 
   factory :admin, class: User do
@@ -12,6 +12,6 @@ FactoryBot.define do
     sequence(:email)      { |n| "admin#{n}@usertest.org" }
     password              { 'password'                   }
     password_confirmation { 'password'                   }
-    admin                 { true                         }
+    role                  { 1                            }
   end
 end

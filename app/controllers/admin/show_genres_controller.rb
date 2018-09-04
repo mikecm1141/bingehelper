@@ -1,6 +1,4 @@
-class Admin::ShowGenresController < ApplicationController
-  before_action :admin_authorize
-
+class Admin::ShowGenresController < Admin::BaseController
   def create
     # grab the show we want to add genres to
     show = Show.find(params[:show_id])
