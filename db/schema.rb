@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180903235940) do
+ActiveRecord::Schema.define(version: 20180904003815) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,13 +39,6 @@ ActiveRecord::Schema.define(version: 20180903235940) do
     t.index ["show_id"], name: "index_show_genres_on_show_id"
   end
 
-  create_table "show_ratings", force: :cascade do |t|
-    t.bigint "show_id"
-    t.bigint "rating_id"
-    t.index ["rating_id"], name: "index_show_ratings_on_rating_id"
-    t.index ["show_id"], name: "index_show_ratings_on_show_id"
-  end
-
   create_table "shows", force: :cascade do |t|
     t.string "title"
     t.datetime "created_at", null: false
@@ -68,6 +61,4 @@ ActiveRecord::Schema.define(version: 20180903235940) do
   add_foreign_key "ratings", "users"
   add_foreign_key "show_genres", "genres"
   add_foreign_key "show_genres", "shows"
-  add_foreign_key "show_ratings", "ratings"
-  add_foreign_key "show_ratings", "shows"
 end

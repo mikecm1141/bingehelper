@@ -5,17 +5,14 @@ class User < ApplicationRecord
   validates_uniqueness_of :email
 
   has_many :ratings
-  has_many :show_ratings, through: :ratings
-  has_many :shows, through: :show_ratings
+  has_many :shows, through: :ratings
 
   def score(show)
-    show_rating = show_ratings.find_by(show_id: show.id)
-    ratings.find(show_rating.id).score
+    ratings.find_by(show_id: show.id).score
   end
 
   def bingecount(show)
-    show_bingecount = show_ratings.find_by(show_id: show.id)
-    ratings.find(show_bingecount.id).bingecount
+    ratings.find_by(show_id: show.id).bingecount
   end
 
   def bingescore(show)

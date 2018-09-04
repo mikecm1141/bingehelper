@@ -6,9 +6,9 @@ describe 'As a user' do
       @user = create(:user)
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user)
       @show1, @show2, @show3 = create_list(:show, 3)
-      @rating1 = @show1.ratings << create(:rating_no_default_user, user: @user)
-      @rating2 = @show2.ratings << create(:rating_no_default_user, user: @user)
-      @rating3 = @show3.ratings << create(:rating_no_default_user, user: @user)
+      @rating1 = @show1.ratings << create(:rating, user: @user)
+      @rating2 = @show2.ratings << create(:rating, user: @user)
+      @rating3 = @show3.ratings << create(:rating, user: @user)
     end
     scenario 'I see a list of all shows I have rated' do
       visit user_path(@user)
