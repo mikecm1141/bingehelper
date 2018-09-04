@@ -29,7 +29,8 @@
                 link_to 'Delete',
                 show_user_rating_path(rating.show, current_user_rating(rating.show, current_user)),
                 method: :delete,
-                data: { confirm: "Delete rating for #{rating.show.title}?" }
+                data: { confirm: "Delete rating for #{rating.show.title}?" },
+                class: 'waves-effect waves-light btn-small'
             %>
           </td>
         </tr>

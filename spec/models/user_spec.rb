@@ -10,8 +10,7 @@ describe User, type: :model do
   end
   describe 'Relationships' do
     it { should have_many :ratings }
-    it { should have_many(:show_ratings).through(:ratings) }
-    it { should have_many(:shows).through(:show_ratings) }
+    it { should have_many(:shows).through(:ratings) }
   end
   describe 'Instance Methods' do
     before(:each) do

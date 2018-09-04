@@ -11,7 +11,6 @@ class User::RatingsController < ApplicationController
 
   def destroy
     rating = Rating.find(params[:id])
-    rating.show_ratings.where(rating_id: rating.id).destroy_all
     rating.destroy
 
     redirect_to show_path(params[:show_id])

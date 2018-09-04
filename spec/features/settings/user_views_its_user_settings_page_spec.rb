@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe 'As a user' do
   before(:each) do
-    @user = User.create!(name: 'User', email: 'user', password: 'user', password_confirmation: 'user', admin: false)
+    @user = create(:user)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user)
   end
   describe 'When I click my email when logged in' do
@@ -29,11 +29,25 @@ describe 'As a user' do
       expect(current_path).to eq(settings_user_path(@user))
       expect(page).to have_content('Password changed successfully.')
     end
+    scenario 'As user cannot access someone elses settings page' do
+      user2 = create(:user)
+      visit settings_user_path(user2)
+
+      expect(current_path).to eq(root_path)
+      expect(page).to have_content('You are not authorized to view that page.')
+    end
+    scenario 'As user cannot access someone elses change password page' do
+      user2 = create(:user)
+      visit settings_user_path(user2)
+
+      expect(current_path).to eq(root_path)
+      expect(page).to have_content('You are not authorized to view that page.')
+    end
   end
 end
 describe 'As a visitor' do
   before(:each) do
-    @user = User.create!(name: 'Mike', email: 'mikecm@gmail.com', password: 'pass', password_confirmation: 'pass')
+    @user = create(:user)
   end
   describe 'I cannot see these pages until logged in' do
     it 'sends me back to the login page with an error message' do
