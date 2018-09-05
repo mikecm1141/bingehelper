@@ -54,9 +54,20 @@ describe Show, type: :model do
       show5.ratings << create(:rating, bingecount: 4)
 
       expected_result = [show2, show1, show4, show3, show5]
-      require "pry"; binding.pry
 
       expect(Show.top_shows_by_bingecount).to eq(expected_result)
+    end
+    it '.top_shows_by_bingescore' do
+      show1, show2, show3, show4, show5 = create_list(:show, 5, runtime: 20)
+      show1.ratings << create(:rating, bingecount: 8, score: 8)
+      show2.ratings << create(:rating, bingecount: 10, score: 8)
+      show3.ratings << create(:rating, bingecount: 6, score: 6)
+      show4.ratings << create(:rating, bingecount: 7, score: 7)
+      show5.ratings << create(:rating, bingecount: 4, score: 3)
+
+      expected_result = [show2, show1, show4, show3, show5]
+
+      expect(Show.top_shows_by_bingescore).to eq(expected_result)
     end
   end
   describe 'Instance Methods' do

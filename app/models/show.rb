@@ -33,6 +33,14 @@ class Show < ApplicationRecord
       .limit(amount)
   end
 
+  def self.top_shows_by_bingescore(amount = 5)
+    select("shows.*, SQRT((AVG(bingecount) * runtime) * (AVG(score) / 10)) AS avg_bingescore")
+      .joins(:ratings)
+      .group(:show_id, :id)
+      .order("avg_bingescore DESC")
+      .limit(5)
+  end
+
   def avg_score
     ratings.average(:score).round(1)
   end
