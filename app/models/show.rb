@@ -9,6 +9,14 @@ class Show < ApplicationRecord
   has_many :ratings
   has_many :users, through: :ratings
 
+  def self.most_active_shows(amount = 5)
+    select("shows.*, COUNT (show_id) AS show_count")
+      .joins(:ratings)
+      .group(:show_id, :id)
+      .order("show_count DESC")
+      .limit(amount)
+  end
+
   def avg_score
     ratings.average(:score).round(1)
   end
@@ -19,5 +27,9 @@ class Show < ApplicationRecord
 
   def bingescore
   ((((avg_score + avg_bingecount) / 2.0)  * runtime) * 0.5).round(1)
+  end
+
+  def total_ratings
+    ratings.count
   end
 end
