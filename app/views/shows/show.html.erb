@@ -10,19 +10,50 @@
   <p class="flow-text">Episode Runtime: <%= @show.runtime %> minutes</p>
 </div>
 <div class="row">
-  <div class="col s6">
-    <%= image_tag("#{@show.image}", class: "responsive-img poster-img right hoverable" ) %>
+  <div class="col s4">
+    <%= image_tag("#{@show.image}", class: "responsive-img poster-img left hoverable" ) %>
   </div>
-  <div class="col s6">
-    <p class="flow-text"><%= @show.overview %></p>
+  <div class="col s8">
+    <p class="flow-text overview-text"><%= @show.overview %></p>
+    <% if @show.ratings.empty? %>
+      <span class="flow-text">No rating information for this show yet.</span>
+    <% else %>
+      <div id="stats-all">
+        <table class="responsive-table rating-table">
+          <tr class="no-borders">
+            <td>Average Review Score</td>
+            <td><%= @show.avg_score %>/10</td>
+          </tr>
+          <tr class="no-borders">
+            <td>Average BingeCount</td>
+            <td><%= @show.avg_bingecount %> episodes</td>
+          </tr>
+          <tr class="no-borders">
+            <td>BingeScore</td>
+            <td><%= @show.bingescore %></td>
+          </tr>
+        </table>
+      </div>
+    <% end %>
+    <hr>
     <% if current_user && current_user.show_rated?(@show) %>
       <div id="stats-user-<%= current_user.id %>">
-        <p class="flow-text">
-          Your Review Score: <%= current_user.score(@show) %>/10<br />
-          Your BingeCount: <%= current_user.bingecount(@show) %> episodes<br />
-          Your BingeScore: <%= current_user.bingescore(@show) %><br />
+          <table class="responsive-table rating-table">
+            <tr class="no-borders">
+              <td>Your Review Score</td>
+              <td><%= current_user.score(@show) %>/10</td>
+            </tr>
+            <tr class="no-borders">
+              <td>Your BingeCount</td>
+              <td><%= current_user.bingecount(@show) %> episodes</td>
+            </tr>
+            <tr class="no-borders">
+              <td>Your BingeScore</td>
+              <td><%= current_user.bingescore(@show) %></td>
+            </tr>
+          </table>
           <%=
-              link_to 'Delete Rating',
+              link_to 'Delete Your Rating',
               show_user_rating_path(@show, current_user.current_user_rating(@show)),
               method: :delete,
               data: { confirm: "Delete rating for #{@show.title}?" },
@@ -31,7 +62,7 @@
         </p>
       </div>
       <% elsif current_user %>
-        <h5>Submit Rating for <%= @show.title %></h5>
+        <span class="flow-text">Submit Rating for <%= @show.title %></span>
         <%= form_for [@show, :user, @rating] do |f| %>
           <%= f.label  :score, "Your Review For #{@show.title}" %>
           <%= f.select :score, options_for_select((1..10).map { |n| ["#{n}/10", n] }) %>
@@ -41,19 +72,6 @@
 
           <%= f.submit 'Submit Rating', class: 'btn waves-effect waves-light' %>
         <% end %>
-    <% end %>
-  </div>
-  <div class="col s6">
-    <% if @show.ratings.empty? %>
-      <p class="flow-text">No rating information for this show yet.</p>
-    <% else %>
-      <div id="stats-all">
-        <p class="flow-text">
-          Average Review Score: <%= @show.avg_score %>/10<br />
-          Average BingeCount: <%= @show.avg_bingecount %> episodes<br />
-          BingeScore: <%= @show.bingescore %>
-        </p>
-      </div>
     <% end %>
   </div>
 </div>
