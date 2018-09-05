@@ -12,6 +12,7 @@ describe 'As an admin' do
       fill_in :show_title, with: 'Futurama'
       select '2002', from: :show_year
       fill_in :show_runtime, with: '60'
+      fill_in :show_overview, with: 'Some text and stuff.'
       click_on 'Create Show'
 
       expect(current_path).to eq(admin_shows_path)

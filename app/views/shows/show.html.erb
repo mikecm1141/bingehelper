@@ -11,9 +11,10 @@
 </div>
 <div class="row">
   <div class="col s6">
-    <%= image_tag("shows/#{@show.image}", class: "responsive-img poster-img right hoverable" ) %>
+    <%= image_tag("#{@show.image}", class: "responsive-img poster-img right hoverable" ) %>
   </div>
   <div class="col s6">
+    <p class="flow-text"><%= @show.overview %></p>
     <% if current_user && current_user.show_rated?(@show) %>
       <div id="stats-user-<%= current_user.id %>">
         <p class="flow-text">
