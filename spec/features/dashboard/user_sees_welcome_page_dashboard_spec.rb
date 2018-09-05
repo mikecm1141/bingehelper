@@ -4,7 +4,6 @@ describe 'As any kind of user' do
   describe 'when I visit the root page' do
     it 'displays a list of the most rated shows' do
       show1, show2, show3, show4, show5 = create_list(:show, 5)
-
       8.times { show1.ratings << create(:rating) }
       6.times { show2.ratings << create(:rating) }
       4.times { show3.ratings << create(:rating) }
