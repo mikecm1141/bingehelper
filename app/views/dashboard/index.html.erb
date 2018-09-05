@@ -1,8 +1,8 @@
 <div id="most-rated-shows">
-  <h6>Most Active Shows</h6>
-  <% @most_active_shows.each do |show| %>
+  <h6>Most Rated Shows</h6>
+  <% @most_rated_shows.each do |show| %>
     <p>
-      <%= show.title %> (<%= show.year %>) - <%= show.total_ratings %> user ratings
+      <%= link_to show.title, show_path(show) %> (<%= show.year %>) - <%= show.total_ratings %> user ratings
     </p>
   <% end %>
 </div>

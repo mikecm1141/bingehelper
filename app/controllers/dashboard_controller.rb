@@ -1,5 +1,5 @@
 class DashboardController < ApplicationController
   def index
-    @most_active_shows = Show.most_active_shows
+    @most_rated_shows = Show.most_rated_shows
   end
 end

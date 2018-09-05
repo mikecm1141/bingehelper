@@ -9,11 +9,19 @@ class Show < ApplicationRecord
   has_many :ratings
   has_many :users, through: :ratings
 
-  def self.most_active_shows(amount = 5)
+  def self.most_rated_shows(amount = 5)
     select("shows.*, COUNT (show_id) AS show_count")
       .joins(:ratings)
       .group(:show_id, :id)
       .order("show_count DESC")
+      .limit(amount)
+  end
+
+  def self.top_shows_by_score(amount = 5)
+    select("shows.*, AVG (score) AS avg_score")
+      .joins(:ratings)
+      .group(:show_id, :id)
+      .order("avg_score DESC")
       .limit(amount)
   end
 

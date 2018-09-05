@@ -20,7 +20,7 @@ describe Show, type: :model do
     it { should have_many(:users).through(:ratings)        }
   end
   describe 'Class Methods' do
-    it '.most_active_shows' do
+    it '.most_rated_shows' do
       show1, show2, show3, show4, show5 = create_list(:show, 5)
 
       6.times { show1.ratings << create(:rating, show: show1) }
@@ -31,7 +31,19 @@ describe Show, type: :model do
 
       expected = [show2, show1, show4, show5, show3]
 
-      expect(Show.most_active_shows).to eq(expected)
+      expect(Show.most_rated_shows).to eq(expected)
+    end
+    it '.top_shows_by_score' do
+      show1, show2, show3, show4, show5 = create_list(:show, 5)
+      show1.ratings << create(:rating, score: 8)
+      show2.ratings << create(:rating, score: 10)
+      show3.ratings << create(:rating, score: 6)
+      show4.ratings << create(:rating, score: 7)
+      show5.ratings << create(:rating, score: 4)
+
+      expected_result = [show2, show1, show4, show3, show5]
+
+      expect(Show.top_shows_by_score).to eq(expected_result)
     end
   end
   describe 'Instance Methods' do
