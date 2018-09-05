@@ -30,5 +30,8 @@ describe User, type: :model do
 
       expect(@user.bingescore(@show)).to eq(expected_result)
     end
+    it '#show_rated?(show)' do
+      expect(@user.show_rated?(@show)).to be_truthy
+    end
   end
 end
