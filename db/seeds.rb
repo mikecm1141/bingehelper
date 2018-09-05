@@ -87,8 +87,9 @@ puts 'Created default admin account.'
 
 # Create some shows with info from API
 puts "Adding some shows..."
-SHOWS.each do |show_title|
+SHOWS.each_with_index do |show_title, index|
   puts "Getting information for #{show_title}..."
+  sleep(15) if index == 19
   show_data = show_info_api(show_title)
   puts "Adding #{show_title}..."
   show = Show.create(
