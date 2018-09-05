@@ -2,7 +2,7 @@
 <div class="show-genres center-align">
   <% @genres.each do |genre| %>
     <div class="chip hoverable">
-      <%= link_to genre.title, admin_genre_path(genre) %>
+      <%= link_to genre.title, genre_path(genre) %>
     </div>
   <% end %>
 </div>
