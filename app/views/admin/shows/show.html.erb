@@ -20,17 +20,22 @@
   %>
 </h5>
 
-<div class="container">
-  <h5>Edit Genres for <%= @show.title %></h5>
-  <h6><%= link_to 'Add New Genre', new_admin_genre_path %>
-  <%= form_for [:admin, @show, @new_show_genres] do |f| %>
-    <%=
-       f.select :id,
-       @genres.map {|genre| [genre.title, genre.id]},
-       { selected: @show.genres.map(&:id) },
-       { multiple: true, size: 10, id: 'genre-box' }
-    %>
+<div class="row">
+  <div class="col s6">
+    <h5>Edit Genres for <%= @show.title %></h5>
+    <h6><%= link_to 'Add New Genre', new_admin_genre_path %>
+    <%= form_for [:admin, @show, @new_show_genres] do |f| %>
+      <%=
+         f.select :id,
+         @genres.map {|genre| [genre.title, genre.id]},
+         { selected: @show.genres.map(&:id) },
+         { multiple: true, size: 10, id: 'genre-box' }
+      %>
 
-    <%= f.submit 'Update Genres' %>
-  <% end %>
+      <%= f.submit 'Update Genres' %>
+    <% end %>
+  </div>
+  <div class="col s6">
+    <p class="flow-text"><%= @show.overview %></p>
+  </div>
 </div>

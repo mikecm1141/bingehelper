@@ -13,6 +13,7 @@ describe 'As an admin' do
       visit edit_admin_show_path(@show)
 
       fill_in :show_title, with: 'The Simpsons'
+      fill_in :show_overview, with: 'A funny show.'
       click_on 'Update Show'
 
       expect(current_path).to eq(admin_show_path(@show))
