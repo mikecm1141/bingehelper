@@ -19,6 +19,21 @@ describe Show, type: :model do
     it { should have_many :ratings                    }
     it { should have_many(:users).through(:ratings)        }
   end
+  describe 'Class Methods' do
+    it '.most_active_shows' do
+      show1, show2, show3, show4, show5 = create_list(:show, 5)
+
+      6.times { show1.ratings << create(:rating, show: show1) }
+      8.times { show2.ratings << create(:rating, show: show2) }
+      1.times { show3.ratings << create(:rating, show: show3) }
+      4.times { show4.ratings << create(:rating, show: show4) }
+      2.times { show5.ratings << create(:rating, show: show5) }
+
+      expected = [show2, show1, show4, show5, show3]
+
+      expect(Show.most_active_shows).to eq(expected)
+    end
+  end
   describe 'Instance Methods' do
     before(:each) do
       @show = create(:show)
