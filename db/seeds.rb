@@ -70,7 +70,7 @@ def show_info_api(show_title)
     year:     JSON.parse(details_response)["first_air_date"][0..3].to_i,
     image:    "https://image.tmdb.org/t/p/original/#{JSON.parse(details_response)["poster_path"]}",
     runtime:  JSON.parse(details_response)["episode_run_time"].first,
-    genres:   JSON.parse(details_response)["genres"]
+    genres:   JSON.parse(details_response)["genres"],
     overview: JSON.parse(details_response)["overview"]
   }
 end
@@ -96,7 +96,7 @@ SHOWS.each do |show_title|
     title:    show_data[:title],
     year:     show_data[:year],
     image:    show_data[:image],
-    runtime:  show_data[:runtime]
+    runtime:  show_data[:runtime],
     overview: show_data[:overview]
   )
   puts "Adding genres to #{show_title}..."
