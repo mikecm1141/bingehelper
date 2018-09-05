@@ -10,16 +10,16 @@
   <p class="flow-text">Episode Runtime: <%= @show.runtime %> minutes</p>
 </div>
 <div class="row">
-  <div class="col s4">
+  <div class="col l5">
     <%= image_tag("#{@show.image}", class: "responsive-img poster-img left hoverable" ) %>
   </div>
-  <div class="col s8">
+  <div class="col l7">
     <p class="flow-text overview-text"><%= @show.overview %></p>
     <% if @show.ratings.empty? %>
       <span class="flow-text">No rating information for this show yet.</span>
     <% else %>
       <div id="stats-all">
-        <table class="responsive-table rating-table">
+        <table class="rating-table">
           <tr class="no-borders">
             <td>Total Ratings</td>
             <td><%= @show.total_ratings %></td>
@@ -42,7 +42,7 @@
     <hr>
     <% if current_user && current_user.show_rated?(@show) %>
       <div id="stats-user-<%= current_user.id %>">
-        <table class="responsive-table rating-table">
+        <table class="rating-table">
           <tr class="no-borders">
             <td>Your Review Score</td>
             <td><%= current_user.score(@show) %>/10</td>
