@@ -21,6 +21,10 @@
       <div id="stats-all">
         <table class="responsive-table rating-table">
           <tr class="no-borders">
+            <td>Total Ratings</td>
+            <td><%= @show.total_ratings %></td>
+          </tr>
+          <tr class="no-borders">
             <td>Average Review Score</td>
             <td><%= @show.avg_score %>/10</td>
           </tr>
@@ -38,28 +42,27 @@
     <hr>
     <% if current_user && current_user.show_rated?(@show) %>
       <div id="stats-user-<%= current_user.id %>">
-          <table class="responsive-table rating-table">
-            <tr class="no-borders">
-              <td>Your Review Score</td>
-              <td><%= current_user.score(@show) %>/10</td>
-            </tr>
-            <tr class="no-borders">
-              <td>Your BingeCount</td>
-              <td><%= current_user.bingecount(@show) %> episodes</td>
-            </tr>
-            <tr class="no-borders">
-              <td>Your BingeScore</td>
-              <td><%= current_user.bingescore(@show) %></td>
-            </tr>
-          </table>
-          <%=
-              link_to 'Delete Your Rating',
-              show_user_rating_path(@show, current_user.current_user_rating(@show)),
-              method: :delete,
-              data: { confirm: "Delete rating for #{@show.title}?" },
-              class: 'btn waves-effect waves-light'
-          %>
-        </p>
+        <table class="responsive-table rating-table">
+          <tr class="no-borders">
+            <td>Your Review Score</td>
+            <td><%= current_user.score(@show) %>/10</td>
+          </tr>
+          <tr class="no-borders">
+            <td>Your BingeCount</td>
+            <td><%= current_user.bingecount(@show) %> episodes</td>
+          </tr>
+          <tr class="no-borders">
+            <td>Your BingeScore</td>
+            <td><%= current_user.bingescore(@show) %></td>
+          </tr>
+        </table>
+        <%=
+            link_to 'Delete Your Rating',
+            show_user_rating_path(@show, current_user.current_user_rating(@show)),
+            method: :delete,
+            data: { confirm: "Delete rating for #{@show.title}?" },
+            class: 'btn waves-effect waves-light'
+        %>
       </div>
       <% elsif current_user %>
         <span class="flow-text">Submit Rating for <%= @show.title %></span>
@@ -68,7 +71,7 @@
           <%= f.select :score, options_for_select((1..10).map { |n| ["#{n}/10", n] }) %>
 
           <%= f.label  :bingecount, "#{@show.title} Episodes Watched Per Session" %>
-          <%= f.select :bingecount, options_for_select((1..20).map { |n| ["#{n} episodes", n] }) %>
+          <%= f.select :bingecount, options_for_select((1..12).map { |n| ["#{n} episodes", n] }) %>
 
           <%= f.submit 'Submit Rating', class: 'btn waves-effect waves-light' %>
         <% end %>

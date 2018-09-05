@@ -26,7 +26,7 @@ describe User, type: :model do
       expect(@user.bingecount(@show)).to eq(@rating.bingecount)
     end
     it '#bingescore(show)' do
-      expected_result = (@rating.bingecount * @rating.score) / 2.0
+      expected_result = (Math.sqrt(@user.bingecount(@show) * @show.runtime) * (@user.score(@show) / 10)).round(1)
 
       expect(@user.bingescore(@show)).to eq(expected_result)
     end

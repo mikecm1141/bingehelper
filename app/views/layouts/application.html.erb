@@ -41,7 +41,6 @@
             <li class="tab">Admin Tools</li>
             <li class="tab"><%= link_to 'Shows', admin_shows_path %></li>
             <li class="tab"><%= link_to 'Genres', admin_genres_path %></li>
-            <li class="tab"><a href="#">Ratings</a></li>
           </ul>
         </div>
       <% end %>
@@ -49,11 +48,11 @@
 
     </nav>
     <ul class="sidenav" id="mobile-demo">
-      <li><%= link_to 'Shows', admin_shows_path %></li>
-      <li><a href="badges.html">Ratings</a></li>
-      <li><a href="collapsible.html">Genres</a></li>
+      <li><%= link_to 'Shows', shows_path %></li>
+      <li><%= link_to 'Genres', genres_path %></li>
       <li>&emsp;</li>
       <% if current_user %>
+        <li><%= link_to 'My Ratings', user_path(current_user) %></a></li>
         <li><%= link_to current_user.email, settings_user_path(current_user), id: 'mobile-user-link'  %></li>
         <li><%= link_to 'Logout', logout_path, method: :delete, id: 'mobile-log-out' %></li>
       <% else %>
