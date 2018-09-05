@@ -38,7 +38,7 @@ describe 'As any kind of user' do
         expect(page).to have_content("#{show5.title} (#{show5.year}) #{show5.avg_score}/10")
       end
     end
-    it 'displays a list of top shows by user score' do
+    it 'displays a list of top shows by user BingeCount' do
       show1, show2, show3, show4, show5 = create_list(:show, 5)
       show1.ratings << create(:rating, bingecount: 8)
       show2.ratings << create(:rating, bingecount: 10)
@@ -54,6 +54,24 @@ describe 'As any kind of user' do
         expect(page).to have_content("#{show3.title} (#{show3.year}) #{show3.avg_bingecount} episodes")
         expect(page).to have_content("#{show4.title} (#{show4.year}) #{show4.avg_bingecount} episodes")
         expect(page).to have_content("#{show5.title} (#{show5.year}) #{show5.avg_bingecount} episodes")
+      end
+    end
+    it 'displays a list of top shows by BingeScore' do
+      show1, show2, show3, show4, show5 = create_list(:show, 5, runtime: 20)
+      show1.ratings << create(:rating, bingecount: 8, score: 8)
+      show2.ratings << create(:rating, bingecount: 10, score: 8)
+      show3.ratings << create(:rating, bingecount: 6, score: 6)
+      show4.ratings << create(:rating, bingecount: 7, score: 7)
+      show5.ratings << create(:rating, bingecount: 4, score: 3)
+
+      visit root_path
+
+      within("#top-shows-by-bingescore") do
+        expect(page).to have_content("#{show1.title} (#{show1.year}) #{show1.bingescore}")
+        expect(page).to have_content("#{show2.title} (#{show2.year}) #{show2.bingescore}")
+        expect(page).to have_content("#{show3.title} (#{show3.year}) #{show3.bingescore}")
+        expect(page).to have_content("#{show4.title} (#{show4.year}) #{show4.bingescore}")
+        expect(page).to have_content("#{show5.title} (#{show5.year}) #{show5.bingescore}")
       end
     end
   end

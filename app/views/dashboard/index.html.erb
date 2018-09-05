@@ -1,19 +1,4 @@
 <div class="row">
-  <div class="col s4" id="most-rated-shows">
-    <table class="responsive-table rating-table">
-      <thead>
-        <th>Most Rated Shows</th>
-      </thead>
-      <tbody>
-        <% @most_rated_shows.each do |show| %>
-          <tr class="no-borders">
-            <td><%= link_to show.title, show_path(show)%> (<%= show.year %>)</td>
-            <td><%= show.total_ratings %> user ratings</td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-  </div>
   <div class="col s4" id="top-shows-by-score">
     <table class="responsive-table rating-table">
       <thead>
@@ -39,6 +24,36 @@
           <tr class="no-borders">
             <td><%= link_to show.title, show_path(show)%> (<%= show.year %>)</td>
             <td><%= show.avg_bingecount %> episodes</td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <div class="col s4" id="top-shows-by-bingescore">
+    <table class="responsive-table rating-table">
+      <thead>
+        <th>Top Shows By BingeScore</th>
+      </thead>
+      <tbody>
+        <% @top_shows_by_bingescore.each do |show| %>
+          <tr class="no-borders">
+            <td><%= link_to show.title, show_path(show)%> (<%= show.year %>)</td>
+            <td><%= show.bingescore %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <div class="col s4" id="most-rated-shows">
+    <table class="responsive-table rating-table">
+      <thead>
+        <th>Most Rated Shows</th>
+      </thead>
+      <tbody>
+        <% @most_rated_shows.each do |show| %>
+          <tr class="no-borders">
+            <td><%= link_to show.title, show_path(show)%> (<%= show.year %>)</td>
+            <td><%= show.total_ratings %> user ratings</td>
           </tr>
         <% end %>
       </tbody>
