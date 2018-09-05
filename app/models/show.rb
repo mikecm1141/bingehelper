@@ -25,6 +25,14 @@ class Show < ApplicationRecord
       .limit(amount)
   end
 
+  def self.top_shows_by_bingecount(amount = 5)
+    select("shows.*, AVG (bingecount) AS avg_bingecount")
+      .joins(:ratings)
+      .group(:show_id, :id)
+      .order("avg_bingecount DESC")
+      .limit(amount)
+  end
+
   def avg_score
     ratings.average(:score).round(1)
   end
