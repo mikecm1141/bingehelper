@@ -51,7 +51,7 @@ describe Show, type: :model do
       expect(@show.avg_bingecount).to eq(avg_bingecount)
     end
     it '#bingescore' do
-      bingescore =  ((((@show.avg_score + @show.avg_bingecount) / 2.0)  * @show.runtime) * 0.5).round(1)
+      bingescore = (Math.sqrt(@show.avg_bingecount * @show.runtime) * (@show.avg_score / 10)).round(1)
 
       expect(@show.bingescore).to eq(bingescore)
     end

@@ -26,6 +26,6 @@ class User < ApplicationRecord
   end
 
   def bingescore(show)
-    (bingecount(show) * score(show)) / 2.0
+    (Math.sqrt(bingecount(show) * show.runtime) * (score(show) / 10)).round(1)
   end
 end

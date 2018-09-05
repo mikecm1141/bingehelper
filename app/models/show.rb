@@ -26,7 +26,7 @@ class Show < ApplicationRecord
   end
 
   def bingescore
-  ((((avg_score + avg_bingecount) / 2.0)  * runtime) * 0.5).round(1)
+  (Math.sqrt(avg_bingecount * runtime) * (avg_score / 10)).round(1)
   end
 
   def total_ratings
