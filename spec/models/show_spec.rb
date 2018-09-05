@@ -40,5 +40,8 @@ describe Show, type: :model do
 
       expect(@show.bingescore).to eq(bingescore)
     end
+    it '#total_ratings' do
+      expect(@show.total_ratings).to eq(3)
+    end
   end
 end
