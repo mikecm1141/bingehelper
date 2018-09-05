@@ -9,6 +9,14 @@ class User < ApplicationRecord
 
   enum role: %w[default admin]
 
+  def show_rated?(show)
+    ratings.exists?(show_id: show.id)
+  end
+
+  def current_user_rating(show)
+    ratings.find_by(show_id: show.id)
+  end
+
   def score(show)
     ratings.find_by(show_id: show.id).score
   end
