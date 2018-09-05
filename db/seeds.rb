@@ -21,7 +21,8 @@ puts 'Created default admin account.'
 puts 'Creating default genres...'
 default_genres = %w[Action Adventure Comedy Reality Educational Romance Thriller Suspense Drama Crime Documentary Fantasy History Science Sci-Fi]
 default_genres.sort!
-default_genres.each do |category|
-  Genre.create!(title: category)
+default_genres.each do |genre|
+  Genre.create!(title: genre)
+  puts "Added #{genre} to genre table."
 end
 puts 'Created default genres.'
