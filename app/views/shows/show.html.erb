@@ -39,8 +39,8 @@
         </table>
       </div>
     <% end %>
-    <hr>
     <% if current_user && current_user.show_rated?(@show) %>
+      <hr>
       <div id="stats-user-<%= current_user.id %>">
         <table class="rating-table">
           <tr class="no-borders">
@@ -65,6 +65,7 @@
         %>
       </div>
       <% elsif current_user %>
+        <hr>
         <span class="flow-text">Submit Rating for <%= @show.title %></span>
         <%= form_for [@show, :user, @rating] do |f| %>
           <%= f.label  :score, "Your Review For #{@show.title}" %>
