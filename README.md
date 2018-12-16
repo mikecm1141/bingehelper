@@ -11,6 +11,7 @@
 * [Installation](#installation)
     * [Default Admin Details](#default-admin-details)
 * [Contributors](#contributors)
+* [Thanks](#thanks)
 * [Screenshots](#screenshots)
     * [Home Page](#home-page)
     * [Genre Page](#genre-page)
