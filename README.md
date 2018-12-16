@@ -65,6 +65,11 @@ By default, the database is seeded with an admin account available for use.
 
 This was a solo project by the repository owner, Mike McKee.
 
+## Thanks
+
+* This project uses data from [The Movie DB](https://www.themoviedb.org/?language=en-US)
+* This project utilized the great, lightweight and response framework [Materialize](https://materializecss.com/)
+
 ## Screenshots
 
 #### Home Page
