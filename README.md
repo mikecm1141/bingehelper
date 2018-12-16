@@ -12,9 +12,9 @@
     * [Default Admin Details](#default-admin-details)
 * [Contributors](#contributors)
 * [Screenshots](#screenshots)
-        * [Home Page](#home-page)
-        * [Genre Page](#genre-page)
-        * [Show Page](#show-page)
+    * [Home Page](#home-page)
+    * [Genre Page](#genre-page)
+    * [Show Page](#show-page)
 
 ## Description
 
