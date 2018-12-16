@@ -4,6 +4,18 @@
 
 ## Table of Contents
 
+* [Description](#description)
+* [Requirements](#requirements)
+    * [System Requirements & Dependencies](#system-requirements--dependencies)
+    * [Application Requirements](#application-requirements)
+* [Installation](#installation)
+    * [Default Admin Details](#default-admin-details)
+* [Contributors](#contributors)
+* [Screenshots](#screenshots)
+        * [Home Page](#home-page)
+        * [Genre Page](#genre-page)
+        * [Show Page](#show-page)
+
 ## Description
 
 This application was a self-directed student project. Its purpose is to create
