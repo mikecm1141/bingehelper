@@ -9,7 +9,7 @@ require 'json'
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-API_KEY = 'd381694a730404d4338c1205f04acd69'
+API_KEY = ENV['API_KEY']
 SHOWS = [
   'Futurama',
   'The Simpsons',
@@ -94,8 +94,8 @@ end
 # Make the default admin
 puts 'Creating default admin account.'
 User.create(
-  name: 'Mike',
-  email: 'mikecm@gmail.com',
+  name: 'admin',
+  email: 'admin@admin.com',
   password: 'password',
   password_confirmation: 'password',
   role: 1
